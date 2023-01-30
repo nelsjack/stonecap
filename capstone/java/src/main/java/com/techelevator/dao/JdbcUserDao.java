@@ -91,4 +91,13 @@ public class JdbcUserDao implements UserDao {
         user.setActivated(true);
         return user;
     }
+
+
+
+      /*
+    get all friends by user id
+    get all photos by user id
+    get all posts by user id
+    */
+
 }
