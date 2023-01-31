@@ -4,10 +4,13 @@ import com.techelevator.model.BoardGame;
 import com.techelevator.model.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class JdbcBoardGameDao implements BoardGameDao {
     private JdbcTemplate jdbcTemplate;
 
@@ -43,9 +46,10 @@ public class JdbcBoardGameDao implements BoardGameDao {
     }
 
     //todo: confirm sql syntax
+    @Override
     public List<BoardGame> playedBoardGamesByUserId(int userId, String saveType){
         List<BoardGame> playedGames = new ArrayList<>();
-        String sql = "SELECT board_game_id FROM boardgames WHERE user_id = ? AND save_type = ?";
+        String sql = "SELECT user_game_id, user_id, boardgame_id, save_type FROM boardgames WHERE user_id = ? AND save_type = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, saveType);
 
         while(results.next()) {
@@ -73,7 +77,7 @@ public class JdbcBoardGameDao implements BoardGameDao {
         BoardGame boardGame = new BoardGame();
         boardGame.setUserGameId(rs.getInt("user_game_id"));
         boardGame.setUserId(rs.getInt("user_id"));
-        boardGame.setBoardGameId(rs.getString("board_game_id"));
+        boardGame.setBoardGameId(rs.getString("boardgame_id"));
         boardGame.setSaveType(rs.getString("save_type"));
         return boardGame;
     }
