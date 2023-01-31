@@ -7,10 +7,12 @@ import java.util.List;
 
 public interface FriendDao {
 
+    Friend getFriend(int userId);
+
     List<Friend> findAllFriendsById(int userId);
 
     Friend createFriendship(Friend newFriend);
 
-    boolean deleteFriend(int userId);
+    void deleteFriend(int userId);
 
 }

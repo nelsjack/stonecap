@@ -13,7 +13,7 @@ CREATE TABLE users (
 CREATE TABLE boardgames (
     user_game_id SERIAL,
     user_id int NOT NULL,
-    boardgame_id varchar(20) NOT NULL,
+    board_game_id varchar(20) NOT NULL,
     save_type varchar(20) NOT NULL,
 	CONSTRAINT PK_boardgames PRIMARY KEY (user_game_id), 
     CONSTRAINT FK_boardgames_users FOREIGN KEY (user_id) REFERENCES users (user_id)

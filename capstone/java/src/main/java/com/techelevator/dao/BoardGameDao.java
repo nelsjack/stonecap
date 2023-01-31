@@ -8,8 +8,9 @@ import java.util.List;
 public interface BoardGameDao {
 
     //List<User> usersByBoardGame(int boardGameId);
-    BoardGame getBoardGame (int boardgameId);
+    BoardGame getBoardGame (String boardGameId);
     List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType);
     List<BoardGame> playedBoardGamesByUserId(int userId, String saveType);
     BoardGame saveGameForUser(BoardGame saveGame);
+    void removeBoardGame(int userId, String boardGameId);
 }

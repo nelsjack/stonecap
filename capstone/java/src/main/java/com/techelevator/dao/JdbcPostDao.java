@@ -12,45 +12,54 @@ public class JdbcPostDao implements PostDao{
 
     public JdbcPostDao (JdbcTemplate jdbcTemplate){ this.jdbcTemplate = jdbcTemplate; }
 
+   public Post getPost (int postId){
+        Post post = null;
+        String sql = "SELECT * FROM posts WHERE post_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, postId);
+        if(result.next()){
+            post = mapRowToPost(result);
+        }
+        return post;
+   }
+
     public List<Post> getAllByBoardGame(int boardGameId) {
         List<Post> postsByBoardGame = new ArrayList<>();
         String sql = "SELECT * FROM posts WHERE user_game_id IN (SELECT user_game_id FROM boardgames WHERE boardgame_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
-
         while(results.next()){
             Post post = mapRowToPost(results);
             postsByBoardGame.add(post);
         }
-
         return postsByBoardGame;
     }
+
     public List<Post> getAllByUserId(int userId){
         List<Post> postsByUser = new ArrayList<>();
         String sql = "SELECT * FROM posts WHERE user_id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-
         while(results.next()){
             Post post = mapRowToPost(results);
             postsByUser.add(post);
         }
-
         return postsByUser;
     }
+
     public Post createNewPost(Post createPost) {
+        Post newPost = null;
         String sql = "INSERT INTO posts (image, title, comments, tags, rating, public_private) VALUES (?, ?, ?, ?, ?, ?) RETURNING post_id";
         Integer postId = jdbcTemplate.queryForObject(sql, Integer.class, createPost.getImageUrl(), createPost.getTitle(), createPost.getComments(), createPost.getTags(), createPost.getRating(), createPost.isPublicPrivate());
-
-        return createPost;
+        newPost = getPost(postId);
+        return newPost;
     }
-    public Post updatePost(int postId) {
 
-        return null; }
     public void deletePost(int postId) {
         String sql = "DELETE FROM posts WHERE post_id = ?";
         jdbcTemplate.update(sql, postId);
-  }
+    }
+
     //todo: if we just want to delete photo should we have just a image class/database
     public void deleteImage(String imageUrl){
+
         String sql = "DELETE FROM posts WHERE ";
     }
 

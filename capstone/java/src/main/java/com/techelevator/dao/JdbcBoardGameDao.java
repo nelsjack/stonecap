@@ -15,25 +15,23 @@ public class JdbcBoardGameDao implements BoardGameDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    //todo: move to users?
-//    public List<User> usersByBoardGame(int boardGameId){
-//        List<User> users = new ArrayList<>();
-//        String sql = "SELECT user_id FROM boardgames WHERE boardgame_id = ?";
-//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
-//
-//        while(results.next()){
-//            User user = mapRowToBoardGame(results);
-//            users.add(user);
-//        }
-//        return users;
-//    }
 
-    
+
+    public BoardGame getBoardGame(String boardGameId){
+        BoardGame game = null;
+        String sql = "SELECT * FROM boardgames WHERE board_game_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, boardGameId);
+
+        if(result.next()) {
+            game = mapRowToBoardGame(result);
+        }
+        return game;
+    }
 
     //todo: confirm sql syntax
     public List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType){
         List<BoardGame> wishlistGames = new ArrayList<>();
-        String sql = "SELECT boardgame_id FROM boardgames WHERE user_id = ? AND save_type = ? ";
+        String sql = "SELECT board_game_id FROM boardgames WHERE user_id = ? AND save_type = ? ";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, saveType);
 
         while(results.next())
@@ -47,7 +45,7 @@ public class JdbcBoardGameDao implements BoardGameDao {
     //todo: confirm sql syntax
     public List<BoardGame> playedBoardGamesByUserId(int userId, String saveType){
         List<BoardGame> playedGames = new ArrayList<>();
-        String sql = "SELECT boardgame_id FROM boardgames WHERE user_id = ? AND save_type = ?";
+        String sql = "SELECT board_game_id FROM boardgames WHERE user_id = ? AND save_type = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, saveType);
 
         while(results.next()) {
@@ -60,17 +58,22 @@ public class JdbcBoardGameDao implements BoardGameDao {
     //todo: confirm sql syntax
     public BoardGame saveGameForUser(BoardGame saveGame) {
         BoardGame savedGames = null;
-        String sql = "INSERT INTO boardgames (user_id, boardgame_id, save_type) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO boardgames (user_id, board_game_id, save_type) VALUES (?, ?, ?)";
         Integer userGameId = jdbcTemplate.queryForObject(sql, Integer.class, saveGame.getUserId(), saveGame.getBoardGameId(), saveGame.getSaveType());
-        savedGames =
-        return;
+        savedGames = getBoardGame(String.valueOf(userGameId));
+        return savedGames;
+    }
+
+    public void removeBoardGame(int userId, String boardGameId){
+        String sql = "DELETE FROM boardgames WHERE user_id = ? AND board_game_id = ?";
+        jdbcTemplate.update(sql, userId, boardGameId);
     }
 
     private BoardGame mapRowToBoardGame (SqlRowSet rs) {
         BoardGame boardGame = new BoardGame();
         boardGame.setUserGameId(rs.getInt("user_game_id"));
         boardGame.setUserId(rs.getInt("user_id"));
-        boardGame.setBoardGameId(rs.getString("boardgame_id"));
+        boardGame.setBoardGameId(rs.getString("board_game_id"));
         boardGame.setSaveType(rs.getString("save_type"));
         return boardGame;
     }

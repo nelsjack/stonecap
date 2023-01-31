@@ -82,6 +82,19 @@ public class JdbcUserDao implements UserDao {
         return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
+    //todo: move to users?
+//    public List<User> usersByBoardGame(String boardGameId){
+//        List<User> users = new ArrayList<>();
+//        String sql = "SELECT user_id FROM boardgames WHERE board_game_id = ?";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
+//
+//        while(results.next()){
+//            User user = mapRowToBoardGame(results);
+//            users.add(user);
+//        }
+//        return users;
+//    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));

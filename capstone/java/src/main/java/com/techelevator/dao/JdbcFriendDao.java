@@ -15,6 +15,16 @@ public class JdbcFriendDao implements FriendDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    public Friend getFriend(int userId){
+        Friend friend = null;
+        String sql = "SELECT * from friends WHERE user_id_two = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
+        if(result.next()){
+            friend = mapToRowSet(result);
+        }
+        return friend;
+    }
+
     public List<Friend> findAllFriendsById(int userId) {
         List<Friend> friends = new ArrayList<>();
         String sql = "SELECT * FROM friends WHERE user_id_one = ?";
@@ -27,20 +37,18 @@ public class JdbcFriendDao implements FriendDao{
         return friends;
     }
 
-//    public Friend getFriend ()
-
     public Friend createFriendship(Friend newFriend){
         Friend friendship = null;
         String sql = "INSERT INTO friends (user_id_one, user_id_two) VALUES (?, ?) RETURNING friend_id";
-//        Integer newFriendshipId = jdbcTemplate.queryForObject(sql, int.class, newFriend.getUserIdOne(), newFriend.getUserIdTwo());
-//        friendship = getFriend(newFriendshipId);
+        Integer newFriendshipId = jdbcTemplate.queryForObject(sql, int.class, newFriend.getUserIdOne(), newFriend.getUserIdTwo());
+        friendship = getFriend(newFriendshipId);
 
         return friendship;
     }
 
-    public boolean deleteFriend(int userId){
-
-        return false;
+    public void deleteFriend(int userId){
+        String sql = "DELETE FROM friends WHERE user_id_two = ?";
+        jdbcTemplate.update(sql, userId);
     }
 
     private Friend mapToRowSet(SqlRowSet rs) {
