@@ -29,7 +29,7 @@ public class JdbcFriendDao implements FriendDao{
 
     public List<Friend> findAllFriendsById(int userId) {
         List<Friend> friends = new ArrayList<>();
-        String sql = "SELECT * FROM friends WHERE user_id_one = ?";
+        String sql = "SELECT user_id_two FROM friends WHERE user_id_one = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
 
         while(results.next()) {
