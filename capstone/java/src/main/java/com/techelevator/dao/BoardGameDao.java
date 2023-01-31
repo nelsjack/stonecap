@@ -8,7 +8,8 @@ import java.util.List;
 public interface BoardGameDao {
 
     //List<User> usersByBoardGame(int boardGameId);
+    BoardGame getBoardGame (int boardgameId);
     List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType);
     List<BoardGame> playedBoardGamesByUserId(int userId, String saveType);
-    boolean saveGameForUser(int userId);
+    BoardGame saveGameForUser(BoardGame saveGame);
 }

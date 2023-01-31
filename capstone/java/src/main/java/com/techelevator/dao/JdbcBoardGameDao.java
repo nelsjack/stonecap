@@ -28,6 +28,8 @@ public class JdbcBoardGameDao implements BoardGameDao {
 //        return users;
 //    }
 
+    
+
     //todo: confirm sql syntax
     public List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType){
         List<BoardGame> wishlistGames = new ArrayList<>();
@@ -56,10 +58,12 @@ public class JdbcBoardGameDao implements BoardGameDao {
     }
 
     //todo: confirm sql syntax
-    public boolean saveGameForUser(int userId) {
+    public BoardGame saveGameForUser(BoardGame saveGame) {
+        BoardGame savedGames = null;
         String sql = "INSERT INTO boardgames (user_id, boardgame_id, save_type) VALUES (?, ?, ?)";
-//        Integer userGameId = jdbcTemplate.queryForObject(sql, Integer.class, )
-        return false;
+        Integer userGameId = jdbcTemplate.queryForObject(sql, Integer.class, saveGame.getUserId(), saveGame.getBoardGameId(), saveGame.getSaveType());
+        savedGames =
+        return;
     }
 
     private BoardGame mapRowToBoardGame (SqlRowSet rs) {
