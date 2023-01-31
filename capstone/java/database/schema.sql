@@ -20,20 +20,25 @@ CREATE TABLE boardgames (
 
 CREATE TABLE post (
     post_id SERIAL,
-    user_id int(5) NOT NULL,
-    user_game_id int(5) NOT NULL,
+    user_id int NOT NULL,
+    user_game_id int NOT NULL,
     image varchar (50) NOT NULL,
     title varchar (50) NOT NULL,
     message varchar (10000) NOT NULL
     CONSTRAINT PK_post PRIMARY KEY (post_id),
-    CONSTRAINT FK_user FOREIGN KEY (user_id)
+    CONSTRAINT FK_user FOREIGN KEY (user_id),
     CONSTRAINT FK_boardgames FOREIGN KEY (user_game_id)
     );
 
 CREATE TABLE friends (
     friend_id SERIAL,
-    user_id int(5) NOT NULL,
-    user_id int(5) NOT NULL
+    user_id int NOT NULL,
+    username varchar(50) NOT NULL,
+    user_id int NOT NULL,
+    username varchar (50) NOT NULL
+    CONSTRAINT PK_friends PRIMARY KEY (friend_id),
+    CONSTRAINT FK_user FOREIGN KEY (user_id),
+    CONSTRAINT FK_user FOREIGN KEY (username)
 );
 
 

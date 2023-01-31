@@ -8,6 +8,17 @@ public class BoardGame {
     private String image;
     private String publishedDate;
 
+    public BoardGame() {
+    }
+
+    public BoardGame(String gameName, String description, int numPlayers, String image, String publishedDate) {
+        this.gameName = gameName;
+        this.description = description;
+        this.numPlayers = numPlayers;
+        this.image = image;
+        this.publishedDate = publishedDate;
+    }
+
     public String getGameName() {
         return gameName;
     }
