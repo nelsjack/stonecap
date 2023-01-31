@@ -16,10 +16,4 @@ public interface UserDao {
 
     boolean create(String username, String password, String role);
 
-    List<User> findAllFriendsById(int userId);
-
-    boolean saveFriend(String username, int userId);
-
-    boolean deleteFriend(String username, int userId);
-
 }

@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, boardgames, post, friends;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -15,7 +15,7 @@ CREATE TABLE boardgames (
     user_id int NOT NULL,
     boardgame_id varchar(20) NOT NULL,
     save_type varchar(20) NOT NULL,
-    CONSTRAINT FK_user FOREIGN KEY (user_id)
+    CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
 CREATE TABLE post (
@@ -29,8 +29,8 @@ CREATE TABLE post (
     rating int NOT NULL,
     public_private boolean NOT NULL,
     CONSTRAINT PK_post PRIMARY KEY (post_id),
-    CONSTRAINT FK_user FOREIGN KEY (user_id),
-    CONSTRAINT FK_boardgames FOREIGN KEY (user_game_id)
+    CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT FK_boardgames FOREIGN KEY (user_game_id) REFERENCES boardgames (user_game_id)
     );
 
 CREATE TABLE friends (
@@ -40,8 +40,8 @@ CREATE TABLE friends (
     user_id int NOT NULL,
     username varchar (50) NOT NULL,
     CONSTRAINT PK_friends PRIMARY KEY (friend_id),
-    CONSTRAINT FK_user FOREIGN KEY (user_id),
-    CONSTRAINT FK_user FOREIGN KEY (username)
+    CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT FK_user FOREIGN KEY (username) REFERENCES users (username)
 );
 
 

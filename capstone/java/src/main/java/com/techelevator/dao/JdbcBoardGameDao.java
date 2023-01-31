@@ -18,8 +18,10 @@ public class JdbcBoardGameDao implements BoardGameDao {
 
     private BoardGame mapRowToBoardGame (SqlRowSet rs) {
         BoardGame boardGame = new BoardGame();
-        boardGame.set
-
+        boardGame.setUserGameId(rs.getInt("user_game_id"));
+        boardGame.setUserId(rs.getInt("user_id"));
+        boardGame.setBoardGameId(rs.getString("boardgame_id"));
+        boardGame.setSaveType(rs.getString("save_type"));
         return boardGame;
     }
 
