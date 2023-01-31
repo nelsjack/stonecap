@@ -12,10 +12,10 @@ CREATE TABLE users (
 
 CREATE TABLE boardgames (
     user_game_id SERIAL,
-    user_id int(5) NOT NULL,
+    user_id int NOT NULL,
     boardgame_id varchar(20) NOT NULL,
     save_type varchar(20) NOT NULL,
-    CONSTRAINT FK_user FOREIGN KEY (user_id),
+    CONSTRAINT FK_user FOREIGN KEY (user_id)
 );
 
 CREATE TABLE post (
@@ -24,10 +24,10 @@ CREATE TABLE post (
     user_game_id int NOT NULL,
     image varchar (50) NOT NULL,
     title varchar (50) NOT NULL,
-    comments varchar (10000) NOT NULL
-    tags varchar (10000) NOT NULL
-    rating int NOT NULL;
-    public_private boolean NOT NULL;
+    comments varchar (10000) NOT NULL,
+    tags varchar (10000) NOT NULL,
+    rating int NOT NULL,
+    public_private boolean NOT NULL,
     CONSTRAINT PK_post PRIMARY KEY (post_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id),
     CONSTRAINT FK_boardgames FOREIGN KEY (user_game_id)
@@ -38,7 +38,7 @@ CREATE TABLE friends (
     user_id int NOT NULL,
     username varchar(50) NOT NULL,
     user_id int NOT NULL,
-    username varchar (50) NOT NULL
+    username varchar (50) NOT NULL,
     CONSTRAINT PK_friends PRIMARY KEY (friend_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id),
     CONSTRAINT FK_user FOREIGN KEY (username)

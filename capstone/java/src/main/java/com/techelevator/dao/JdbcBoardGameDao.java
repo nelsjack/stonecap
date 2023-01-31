@@ -15,10 +15,10 @@ public class JdbcBoardGameDao implements BoardGameDao {
     public boolean saveToPlayed(){return false; }
     public boolean deleteBoardGame(){return false; }
 
-    //todo: come back to this
+
     private BoardGame mapRowToBoardGame (SqlRowSet rs) {
         BoardGame boardGame = new BoardGame();
-        //boardGame.getGameName(rs.getString(""))
+        boardGame.set
 
         return boardGame;
     }
