@@ -2,71 +2,60 @@ package com.techelevator.model;
 
 public class BoardGame {
 
-    private String gameName;
-    private String description;
-    private int numPlayers; //counter of saved 'players'
-    private String image;
-    private String publishedDate;
+    private int userGameId;
+    private int userId;
+    private String boardGameId;
+    private String saveType;
 
     public BoardGame() {
     }
 
-    public BoardGame(String gameName, String description, int numPlayers, String image, String publishedDate) {
-        this.gameName = gameName;
-        this.description = description;
-        this.numPlayers = numPlayers;
-        this.image = image;
-        this.publishedDate = publishedDate;
+    public BoardGame(int userGameId, int userId, String boardGameId, String saveType) {
+        this.userGameId = userGameId;
+        this.userId = userId;
+        this.boardGameId = boardGameId;
+        this.saveType = saveType;
     }
 
-    public String getGameName() {
-        return gameName;
+    public int getUserGameId() {
+        return userGameId;
     }
 
-    public void setGameName(String gameName) {
-        this.gameName = gameName;
+    public void setUserGameId(int userGameId) {
+        this.userGameId = userGameId;
     }
 
-    public String getDescription() {
-        return description;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public int getNumPlayers() {
-        return numPlayers;
+    public String getBoardGameId() {
+        return boardGameId;
     }
 
-    public void setNumPlayers(int numPlayers) {
-        this.numPlayers = numPlayers;
+    public void setBoardGameId(String boardGameId) {
+        this.boardGameId = boardGameId;
     }
 
-    public String getImage() {
-        return image;
+    public String getSaveType() {
+        return saveType;
     }
 
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getPublishedDate() {
-        return publishedDate;
-    }
-
-    public void setPublishedDate(String publishedDate) {
-        this.publishedDate = publishedDate;
+    public void setSaveType(String saveType) {
+        this.saveType = saveType;
     }
 
     @Override
     public String toString() {
         return "BoardGame{" +
-                "gameName='" + gameName + '\'' +
-                ", description='" + description + '\'' +
-                ", numPlayers=" + numPlayers +
-                ", image='" + image + '\'' +
-                ", publishedDate='" + publishedDate + '\'' +
+                "userGameId=" + userGameId +
+                ", userId=" + userId +
+                ", boardGameId='" + boardGameId + '\'' +
+                ", saveType='" + saveType + '\'' +
                 '}';
     }
 }

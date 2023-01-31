@@ -92,6 +92,18 @@ public class JdbcUserDao implements UserDao {
         return user;
     }
 
+    public List<User> findAllFriendsById(int userId) {
+        return null;
+    }
+
+    public boolean saveFriend(String username, int userId){
+        return false;
+    }
+
+    public boolean deleteFriend(String username, int userId){
+        return false;
+    }
+
 
 
       /*

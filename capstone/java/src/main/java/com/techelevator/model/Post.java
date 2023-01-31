@@ -3,55 +3,53 @@ package com.techelevator.model;
 import java.util.List;
 
 public class Post {
-    private int rating;
-    private String title;
-    private List<String> tags;
-    private String comments;
+    private int postId;
+    private int userId;
+    private int userGameId;
     private String imageUrl;
+    private String title;
+    private String comments;
+    private List<String> tags;
+    private int rating;
     private boolean publicPrivate;
 
     public Post() {
     }
 
-    public Post(int rating, String title, List<String> tags, String comments, String imageUrl, boolean publicPrivate) {
-        this.rating = rating;
-        this.title = title;
-        this.tags = tags;
-        this.comments = comments;
+    public Post(int postId, int userId, int userGameId, String imageUrl, String title, String comments, List<String> tags, int rating, boolean publicPrivate) {
+        this.postId = postId;
+        this.userId = userId;
+        this.userGameId = userGameId;
         this.imageUrl = imageUrl;
+        this.title = title;
+        this.comments = comments;
+        this.tags = tags;
+        this.rating = rating;
         this.publicPrivate = publicPrivate;
     }
 
-    public int getRating() {
-        return rating;
+    public int getPostId() {
+        return postId;
     }
 
-    public void setRating(int rating) {
-        this.rating = rating;
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 
-    public String getTitle() {
-        return title;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
-    public List<String> getTags() {
-        return tags;
+    public int getUserGameId() {
+        return userGameId;
     }
 
-    public void setTags(List<String> tags) {
-        this.tags = tags;
-    }
-
-    public String getComments() {
-        return comments;
-    }
-
-    public void setComments(String comments) {
-        this.comments = comments;
+    public void setUserGameId(int userGameId) {
+        this.userGameId = userGameId;
     }
 
     public String getImageUrl() {
@@ -62,11 +60,58 @@ public class Post {
         this.imageUrl = imageUrl;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getComments() {
+        return comments;
+    }
+
+    public void setComments(String comments) {
+        this.comments = comments;
+    }
+
+    public List<String> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<String> tags) {
+        this.tags = tags;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
     public boolean isPublicPrivate() {
         return publicPrivate;
     }
 
     public void setPublicPrivate(boolean publicPrivate) {
         this.publicPrivate = publicPrivate;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "postId=" + postId +
+                ", userId=" + userId +
+                ", userGameId=" + userGameId +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", title='" + title + '\'' +
+                ", comments='" + comments + '\'' +
+                ", tags=" + tags +
+                ", rating=" + rating +
+                ", publicPrivate=" + publicPrivate +
+                '}';
     }
 }

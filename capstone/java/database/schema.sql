@@ -24,7 +24,10 @@ CREATE TABLE post (
     user_game_id int NOT NULL,
     image varchar (50) NOT NULL,
     title varchar (50) NOT NULL,
-    message varchar (10000) NOT NULL
+    comments varchar (10000) NOT NULL
+    tags varchar (10000) NOT NULL
+    rating int NOT NULL;
+    public_private boolean NOT NULL;
     CONSTRAINT PK_post PRIMARY KEY (post_id),
     CONSTRAINT FK_user FOREIGN KEY (user_id),
     CONSTRAINT FK_boardgames FOREIGN KEY (user_game_id)
