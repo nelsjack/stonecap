@@ -8,11 +8,16 @@
     <router-link v-bind:to="{ name: 'register'}">
       <button>Register</button>
     </router-link>
+    <trending-games>  </trending-games>
   </div>
 </template>
 
 <script>
+import TrendingGames from '../components/TrendingGames.vue'
 export default {
-  name: "home"
+  name: "home",
+  components:{
+    TrendingGames
+  }
 };
 </script>
