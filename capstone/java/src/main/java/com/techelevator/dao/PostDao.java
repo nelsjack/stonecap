@@ -7,12 +7,11 @@ import java.util.List;
 public interface PostDao {
     List<Post> getAllByBoardGame(int boardGameId);
     List<Post> getAllByUserId(int userId);
-    Post createPost(int rating, String title, List<String> tags, String comments, String imageUrl, boolean publicPrivate);
+    Post createNewPost(Post createPost);
     Post updatePost(int postId);
-    Post deletePost(int postId);
-    Post deleteImage(String imageUrl);
-    Post updateTitle(String title);
-    Post updateRating(int rating);
+    void deletePost(int postId);
+    void deleteImage(String imageUrl);
+    void updatePost(Post updatePost);
 
 
 }

@@ -3,20 +3,17 @@ package com.techelevator.model;
 public class Friend {
     private int friendshipId;
     private int userIdOne;
-    private String usernameOne;
     private int userIdTwo;
-    private String usernameTwo;
 
     public Friend() {
     }
 
-    public Friend(int friendshipId, int userIdOne, String usernameOne, int userIdTwo, String usernameTwo) {
+    public Friend(int friendshipId, int userIdOne, int userIdTwo) {
         this.friendshipId = friendshipId;
         this.userIdOne = userIdOne;
-        this.usernameOne = usernameOne;
         this.userIdTwo = userIdTwo;
-        this.usernameTwo = usernameTwo;
     }
+
 
     public int getFriendshipId() {
         return friendshipId;
@@ -34,14 +31,6 @@ public class Friend {
         this.userIdOne = userIdOne;
     }
 
-    public String getUsernameOne() {
-        return usernameOne;
-    }
-
-    public void setUsernameOne(String usernameOne) {
-        this.usernameOne = usernameOne;
-    }
-
     public int getUserIdTwo() {
         return userIdTwo;
     }
@@ -50,22 +39,12 @@ public class Friend {
         this.userIdTwo = userIdTwo;
     }
 
-    public String getUsernameTwo() {
-        return usernameTwo;
-    }
-
-    public void setUsernameTwo(String usernameTwo) {
-        this.usernameTwo = usernameTwo;
-    }
-
     @Override
     public String toString() {
         return "Friend{" +
                 "friendshipId=" + friendshipId +
                 ", userIdOne=" + userIdOne +
-                ", usernameOne='" + usernameOne + '\'' +
                 ", userIdTwo=" + userIdTwo +
-                ", usernameTwo='" + usernameTwo + '\'' +
                 '}';
     }
 }

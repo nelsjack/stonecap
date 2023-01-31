@@ -7,11 +7,8 @@ import java.util.List;
 
 public interface BoardGameDao {
 
-    List<User> usersByBoardGame(int boardGameId);
-    List<BoardGame> wishlistBoardGameByUserId(int userId);
-    List<BoardGame> playedBoardGamesByUserId(int userId);
-    boolean saveToWishList();
-    boolean saveToPlayed();
-    boolean deleteBoardGame();
-
+    //List<User> usersByBoardGame(int boardGameId);
+    List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType);
+    List<BoardGame> playedBoardGamesByUserId(int userId, String saveType);
+    boolean saveGameForUser(int userId);
 }
