@@ -22,6 +22,7 @@
         required
         autofocus
       />
+      <br/>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,6 +32,7 @@
         v-model="user.password"
         required
       />
+      <br/>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
