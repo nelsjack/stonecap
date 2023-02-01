@@ -31,14 +31,14 @@ public class BoardGameController {
     public BoardGame getBoardGame (String boardGameId){
         return null;
     }
-    @RequestMapping(path = "/boardgame/{username}", method = RequestMethod.GET)
+    @RequestMapping(path = "/boardgame/{username}/wishlist", method = RequestMethod.GET)
     public List<BoardGame> wishlistBoardGameByUserId(@PathVariable String username) {
         int userId = userDao.findIdByUsername(username);
         List<BoardGame> wishlistGames = boardGameDao.playedBoardGamesByUserId(userId, "wishlist");
         return wishlistGames;
     }
 
-    @RequestMapping(path = "/boardgame/{username}", method = RequestMethod.GET)
+    @RequestMapping(path = "/boardgame/{username}/played", method = RequestMethod.GET)
     public List<BoardGame> playedBoardGamesByUsername(@PathVariable String username) {
         int userId = userDao.findIdByUsername(username);
         List<BoardGame> playedGames = boardGameDao.playedBoardGamesByUserId(userId, "played");

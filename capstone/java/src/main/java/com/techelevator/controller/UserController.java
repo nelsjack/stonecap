@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PreAuthorize("isAuthenticated")
+@CrossOrigin
 public class UserController {
     private UserDao userDao;
     private BoardGameDao boardGameDao;
@@ -80,14 +80,4 @@ public class UserController {
         return users;
     }
 
-
-
-
-    /*
-     * get all users      /user/allUsers          XX
-     * get all friends        /user/{username}/friends      XX
-     * post friends (add)    /user/{username}/add-friend       XX
-     * delete friends          /user/{username}/remove-friend/{userId}    XX
-      * users by board game /user/boardgame/{boardgameid}
-     * */
 }

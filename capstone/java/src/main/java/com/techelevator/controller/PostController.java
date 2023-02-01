@@ -5,9 +5,14 @@ import com.techelevator.dao.FriendDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.Post;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@RestController
+@CrossOrigin
 public class PostController {
     private PostDao postDao;
     private UserDao userDao;
@@ -21,23 +26,35 @@ public class PostController {
         this.friendDao = friendDao;
     }
 
-    public Post getPost (int postId){return null; }
-    public List<Post> getAllByBoardGame(int boardGameId){return null; }
-    public List<Post> getAllByUserId(int userId){return null; }
-    public Post createNewPost(Post createPost){return null; }
-    public void deletePost(int postId){}
-    public void deleteImage(String imageUrl){}
+    @RequestMapping(path = "/post/{postId}", method = RequestMethod.GET)
+    public Post getPost (@PathVariable int postId){
+        Post post = postDao.getPost(postId);
+        return post; }
 
-    /*
-     * get all posts
-     * post a post
-     * put post
-     * delete post
-     * delete picture
-     * put title of the post
-     * delete title of the post
-     * put rating
-     * delete rating
-    * */
+    @RequestMapping(path = "/post/{boardGameId}", method = RequestMethod.GET)
+    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
+        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
+        return posts; }
+
+    @RequestMapping(path = "/post/{userId}")
+    public List<Post> getAllByUserId(int userId){
+        List<Post> posts = postDao.getAllByUserId(userId);
+        return posts; }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/create-post")
+    public Post createNewPost(@RequestBody Post createPost){
+        return postDao.createNewPost(createPost); }
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/delete-post", method = RequestMethod.DELETE)
+    public void deletePost(@PathVariable int postId){
+        postDao.deletePost(postId);
+    }
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @RequestMapping(path = "/delete-image", method = RequestMethod.DELETE)
+    public void deleteImage(String imageUrl){
+        postDao.deleteImage(imageUrl);
+    }
 
 }
