@@ -1,13 +1,17 @@
 <template>
-  <div> 
-      <div v-for="game in games" v-bind:key="game.id">{{game.handle}} </div>
+  <div class="trending-games-container">
+      <h1>Trending Games</h1> 
+      <game-card :games="this.games"/>
   </div>
 </template>
 
 <script>
 import boardGameService from '../services/BoardGameService'
+import GameCard from './GameCard.vue';
+
 export default {  
     name: 'trending-games', 
+    components: { GameCard },
     data(){
         return{
             games: []
@@ -15,7 +19,6 @@ export default {
     },
     created(){
         this.getTopTenBoardGames();
-        console.log(this.games)
     },
     methods: {
     getTopTenBoardGames(){
@@ -30,5 +33,22 @@ export default {
 </script>
 
 <style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
+  .home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .trending-games-container {
+    width: 75%;
+    margin-top: 1em;
+  }
 </style>

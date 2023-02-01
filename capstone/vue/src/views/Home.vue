@@ -1,7 +1,6 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>Token: {{ this.$store.state.user.username }} </p>
+    <h1>Welcom to Board Game Capstone!</h1>
     <router-link v-bind:to="{ name: 'login'}"> 
       <button>Login</button>
     </router-link>
