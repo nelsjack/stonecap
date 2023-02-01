@@ -34,6 +34,7 @@ export default {
     border: solid 1px;
     border-radius: 10px;
     margin-top: 10px;
+    background-color: #FFFF;
   }
 
   .game-title {

@@ -11,7 +11,7 @@ export default {
     },
 
     getPlayedBoardGames(username) {
-        return http.get(`http://localhost:9000/boardgame/${username}`);
+        return http.get(`http://localhost:9000/boardgame/${username}/played`);
     },
 
     getBoardGamesById(boardGameId) {
