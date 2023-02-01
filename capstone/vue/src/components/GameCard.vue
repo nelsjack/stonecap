@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="game-card" v-for="game in games" v-bind:key="game.id">
+    <div class="game-card" v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
       <img class="game-thumbnail" :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
@@ -9,9 +9,23 @@
 </template>
 
 <script>
+import userService from '../services/UserService';
+
 export default {
     name: 'game-card',
-    props: ['games']
+    props: ['games'],
+    data() {
+      return {
+        hover: false
+      }
+    },
+      methods: {
+        displayCurrentUsers(boardGameId) {
+          userService.getUsersByBoardGameId(boardGameId).then(response => {
+            console.log(response.data);
+          })
+        }
+      }
 };
 </script>
 

@@ -15,8 +15,8 @@ export default {
     },
 
     getBoardGamesById(boardGameId) {
-        return http.get(`https://api.boardgameatlas.com/api/search?ids=${boardGameId}&client_id=kYNboY2Iyu`,  { crossdomain: true });
-    }
+        return http.get(`https://api.boardgameatlas.com/api/search?ids=${boardGameId}&client_id=kYNboY2Iyu`);
+    },
 
   };
   
