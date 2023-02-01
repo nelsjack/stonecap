@@ -22,7 +22,8 @@ export default {
       methods: {
         displayCurrentUsers(boardGameId) {
           userService.getUsersByBoardGameId(boardGameId).then(response => {
-            console.log(response.data);
+            return response;
+            //console.log(response.data);
           })
         }
       }
