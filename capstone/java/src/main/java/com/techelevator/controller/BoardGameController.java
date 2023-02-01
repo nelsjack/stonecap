@@ -5,6 +5,7 @@ import com.techelevator.dao.FriendDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.BoardGame;
+import com.techelevator.service.BoardGameServices;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,7 @@ public class BoardGameController {
     private FriendDao friendDao;
     private PostDao postDao;
     private UserDao userDao;
+   // private BoardGameServices boardGameServices;
 
     public BoardGameController(BoardGameDao boardGameDao, FriendDao friendDao, PostDao postDao, UserDao userDao) {
         this.boardGameDao = boardGameDao;
@@ -29,16 +31,21 @@ public class BoardGameController {
     public BoardGame getBoardGame (String boardGameId){
         return null;
     }
-    public List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType) {
-       return null;
+    @RequestMapping(path = "/boardgame/{username}/wishlist", method = RequestMethod.GET)
+    public List<BoardGame> wishlistBoardGameByUserId(@PathVariable String username) {
+        int userId = userDao.findIdByUsername(username);
+        List<BoardGame> wishlistGames = boardGameDao.playedBoardGamesByUserId(userId, "wishlist");
+        return wishlistGames;
     }
 
-    @RequestMapping(path = "/boardgame/{username}", method = RequestMethod.GET)
+    @RequestMapping(path = "/boardgame/{username}/played", method = RequestMethod.GET)
     public List<BoardGame> playedBoardGamesByUsername(@PathVariable String username) {
         int userId = userDao.findIdByUsername(username);
         List<BoardGame> playedGames = boardGameDao.playedBoardGamesByUserId(userId, "played");
         return playedGames;
     }
+
+
     public BoardGame saveGameForUser(BoardGame saveGame) {
         return null;
     }

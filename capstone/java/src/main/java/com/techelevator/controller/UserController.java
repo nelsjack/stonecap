@@ -8,6 +8,7 @@ import com.techelevator.model.BoardGame;
 import com.techelevator.model.Friend;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
+import org.springframework.lang.UsesSunHttpServer;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@PreAuthorize("isAuthenticated")
+@CrossOrigin
 public class UserController {
     private UserDao userDao;
     private BoardGameDao boardGameDao;
@@ -69,16 +70,14 @@ public class UserController {
         friendDao.deleteFriend(userId);
     }
 
+    @RequestMapping(path = "/user/boardgame/{boardgameId}")
+    public List<String> usersByBoardGame(@PathVariable String boardGameId){
+        List<String> users = new ArrayList<>();
+        List<User> getUsersByBoardGame = userDao.usersByBoardGame(boardGameId);
+        for(User user : getUsersByBoardGame) {
+            users.add(user.getUsername());
+        }
+        return users;
+    }
 
-
-
-
-
-    /*
-     * get all users      /user/allUsers          XX
-     * get all friends        /user/{username}/friends      XX
-     * post friends (add)    /user/{username}/add-friend       XX
-     * delete friends          /user/{username}/remove-friend/{userId}    XX
-      * users by board game /user/boardgame/{boardgameid}
-     * */
 }
