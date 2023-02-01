@@ -22,6 +22,7 @@
         required
         autofocus
       />
+      <br/>
       <label for="password" class="sr-only">Password</label>
       <input
         type="password"
@@ -31,6 +32,7 @@
         v-model="user.password"
         required
       />
+      <br/>
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
@@ -60,7 +62,7 @@ export default {
           if (response.status == 200) {
             this.$store.commit("SET_AUTH_TOKEN", response.data.token);
             this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
+            this.$router.push({ name: "User", params: { username: this.user.username } });
           }
         })
         .catch(error => {
