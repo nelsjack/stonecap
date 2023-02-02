@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+//TODO fix raw use of parameterized classes
 
 //https://www.baeldung.com/integration-testing-a-rest-api
 public class EndPointTests {
