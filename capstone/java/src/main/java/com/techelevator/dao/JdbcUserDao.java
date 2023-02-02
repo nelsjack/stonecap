@@ -84,11 +84,9 @@ public class JdbcUserDao implements UserDao {
 
     public List<User> usersByBoardGame(String boardGameId){
         List<User> users = new ArrayList<>();
-<<<<<<< HEAD
-        String sql = "SELECT users.user_id FROM users JOIN boardgames ON boardgames.user_id = users.user_id WHERE board_game_id = ?";
-=======
+
         String sql = "SELECT users.user_id, users.username, users.password_hash, users.role FROM users JOIN boardgames ON boardgames.user_id = users.user_id WHERE board_game_id = ?";
->>>>>>> 58319ea96c9937f7dcc864be74abddc0fe07310c
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
 
         while(results.next()){
