@@ -10,6 +10,7 @@
       <b-navbar-brand to="/">
         stone cap
       </b-navbar-brand>
+      <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
       <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled">
           <b-dropdown-item >profile</b-dropdown-item>
           <b-dropdown-item >settings</b-dropdown-item>
