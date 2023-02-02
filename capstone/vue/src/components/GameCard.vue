@@ -1,9 +1,14 @@
 <template>
   <div>
-    <div class="game-card" v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
-      <img class="game-thumbnail" :src="game.thumb_url" />
+    <div class="game-card" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
+      <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
+      <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
+      <b-popover :target='`${game.id}`' triggers="hover">
+        <span v-for="player in currentPlayers" v-bind:key="player">{{ player }}<br/></span>
+      </b-popover>
+
     </div>
   </div>
 </template>
@@ -16,14 +21,14 @@ export default {
     props: ['games'],
     data() {
       return {
-        hover: false
+        hover: false,
+        currentPlayers: []
       }
     },
       methods: {
         displayCurrentUsers(boardGameId) {
           userService.getUsersByBoardGameId(boardGameId).then(response => {
-            return response;
-            //console.log(response.data);
+            this.currentPlayers = response.data;
           })
         }
       }
