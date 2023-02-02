@@ -31,5 +31,5 @@ name: 'nav-bar'
   justify-content: center;
   align-items: center;
   background-color: #0A6496;
-}
+ }
 </style>
