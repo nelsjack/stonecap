@@ -4,4 +4,4 @@
 6	"user4"	"$2a$10$oDN17PWBBu8Rx/fqmvI5/OUI7gPA2/Z8l5GxJfGMm6N6s5O31ecCW"	"ROLE_USER"
 7	"user5"	"$2a$10$sucN9eU8Wla5w0.bIdJ3IuXHPvRMOmeo/YMlWmoXX9luq6d866Np2"	"ROLE_USER"
 8	"user6"	"$2a$10$KiM9N0E1XB/GDwhOIKvhA.o0ryXW0/../Hni0h0qnAKMS3oOgVIQe"	"ROLE_USER"
-9	"admin"	"$2a$10$/8LieGb4KMAL7hc4U/VvP.1WPxzjwV18WNUjaiBmUExP.mbdVtQhu"	"ROLE_USER"
+9	"admin"	"$2a$10$/8LieGb4KMAL7hc4U/VvP.1WPxzjwV18WNUjaiBmUExP.mbdVtQhu"	"ROLE_ADMIN"
