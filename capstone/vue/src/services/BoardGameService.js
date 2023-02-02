@@ -11,12 +11,12 @@ export default {
     },
 
     getPlayedBoardGames(username) {
-        return http.get(`http://localhost:9000/boardgame/${username}`);
+        return http.get(`http://localhost:9000/boardgame/${username}/played`);
     },
 
     getBoardGamesById(boardGameId) {
-        return http.get(`https://api.boardgameatlas.com/api/search?ids=${boardGameId}&client_id=kYNboY2Iyu`,  { crossdomain: true });
-    }
+        return http.get(`https://api.boardgameatlas.com/api/search?ids=${boardGameId}&client_id=kYNboY2Iyu`);
+    },
 
   };
   

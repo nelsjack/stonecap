@@ -49,7 +49,7 @@ public class JdbcBoardGameDao implements BoardGameDao {
     @Override
     public List<BoardGame> playedBoardGamesByUserId(int userId, String saveType){
         List<BoardGame> playedGames = new ArrayList<>();
-        String sql = "SELECT user_game_id, user_id, boardgame_id, save_type FROM boardgames WHERE user_id = ? AND save_type = ?";
+        String sql = "SELECT user_game_id, user_id, board_game_id, save_type FROM boardgames WHERE user_id = ? AND save_type = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, saveType);
 
         while(results.next()) {
@@ -77,7 +77,7 @@ public class JdbcBoardGameDao implements BoardGameDao {
         BoardGame boardGame = new BoardGame();
         boardGame.setUserGameId(rs.getInt("user_game_id"));
         boardGame.setUserId(rs.getInt("user_id"));
-        boardGame.setBoardGameId(rs.getString("boardgame_id"));
+        boardGame.setBoardGameId(rs.getString("board_game_id"));
         boardGame.setSaveType(rs.getString("save_type"));
         return boardGame;
     }
