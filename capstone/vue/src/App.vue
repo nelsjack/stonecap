@@ -1,16 +1,26 @@
 <template>
   <div id="app">
-    <div class="nav">
+    <!-- <div class="nav">
             <router-link v-bind:to="{ name: 'home' }">
           <h3>Home</h3>
       </router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">
         <h3>Logout</h3>
       </router-link>
-    </div>
+    </div> -->
+    <nav-bar> </nav-bar>
     <router-view />
   </div>
 </template>
+
+<script>
+import NavBar from 'c:/Users/Student/workspace/m3-board-game-capstone/capstone/vue/src/components/NavBar.vue'
+export default {
+components: {
+  NavBar
+}
+}
+</script>
 
 <style>
   body {
