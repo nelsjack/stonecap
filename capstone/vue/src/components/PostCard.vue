@@ -15,11 +15,15 @@ import postService from '../services/PostService';
 
 export default {
     name: 'post-card', 
-    props: ['post'], 
+    data(){
+      return {
+        post: []
+      }; 
+    },
     methods: {
         getPost(postId) {
             postService.getPostByPostId(postId).then ((response) => {
-                return response;
+                return this.post = response.data;
             })
         }
     }
