@@ -37,7 +37,7 @@ public class PostController {
         return posts; }
 
     @RequestMapping(path = "/post/{userId}")
-    public List<Post> getAllByUserId(int userId){
+    public List<Post> getAllByUserId(@PathVariable int userId){
         List<Post> posts = postDao.getAllByUserId(userId);
         return posts; }
 
