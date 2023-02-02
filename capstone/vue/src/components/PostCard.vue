@@ -15,7 +15,7 @@ import postService from '../services/PostService';
 
 export default {
     name: 'post-card', 
-    props: ['posts'], 
+    props: ['post'], 
     methods: {
         getPost(postId) {
             postService.getPostByPostId(postId).then ((response) => {
