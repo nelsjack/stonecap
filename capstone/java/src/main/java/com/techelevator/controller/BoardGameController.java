@@ -6,9 +6,11 @@ import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
 import com.techelevator.model.BoardGame;
 import com.techelevator.service.BoardGameServices;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -28,9 +30,12 @@ public class BoardGameController {
         this.userDao = userDao;
     }
 
-    public BoardGame getBoardGame (String boardGameId){
-        return null;
+    @RequestMapping(path = "/boardgame/{boardGameId}", method = RequestMethod.GET)
+    public BoardGame getBoardGame (@PathVariable String boardGameId){
+        BoardGame game = boardGameDao.getBoardGame(boardGameId);
+        return game;
     }
+
     @RequestMapping(path = "/boardgame/{username}/wishlist", method = RequestMethod.GET)
     public List<BoardGame> wishlistBoardGameByUserId(@PathVariable String username) {
         int userId = userDao.findIdByUsername(username);
@@ -45,19 +50,16 @@ public class BoardGameController {
         return playedGames;
     }
 
-
-    public BoardGame saveGameForUser(BoardGame saveGame) {
-        return null;
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "boardgame/save-game")
+    public BoardGame saveGameForUser(@RequestBody BoardGame saveGame, @PathVariable String username) {
+        return boardGameDao.saveGameForUser(saveGame);
     }
 
     /*
     *  get all (in the api services)
     *  search bys (in the api services)
     *  get users by board game id
-     * get wishlist board games
-     * get played board games <>
-     * post wishlist board game
-     * post played board game
      * delete board games
     * */
 

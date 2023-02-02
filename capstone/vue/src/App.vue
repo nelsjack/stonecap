@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <div class="nav">
-      <router-link v-bind:to="{ name: 'home' }">
-        <h3>Home</h3>
+            <router-link v-bind:to="{ name: 'home' }">
+          <h3>Home</h3>
       </router-link>
       <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">
         <h3>Logout</h3>
@@ -28,6 +28,6 @@
     justify-content: space-evenly;
     align-items: center;
     height: 3em;
-    background-color: rgb(108, 188, 224);
+    background-color: #0A6496;
   }
 </style>
