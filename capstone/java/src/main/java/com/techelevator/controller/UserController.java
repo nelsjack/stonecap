@@ -70,7 +70,7 @@ public class UserController {
         friendDao.deleteFriend(userId);
     }
 
-    @RequestMapping(path = "/user/boardgame/{boardgameId}")
+    @RequestMapping(path = "/user/boardgame/{boardGameId}")
     public List<String> usersByBoardGame(@PathVariable String boardGameId){
         List<String> users = new ArrayList<>();
         List<User> getUsersByBoardGame = userDao.usersByBoardGame(boardGameId);
