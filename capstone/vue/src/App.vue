@@ -8,7 +8,7 @@
         <h3>Logout</h3>
       </router-link>
     </div> -->
-    <nav-bar> </nav-bar>
+    <nav-bar></nav-bar>
     <router-view />
   </div>
 </template>

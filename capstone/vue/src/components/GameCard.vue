@@ -5,7 +5,7 @@
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
-      <b-popover :target='`${game.id}`' triggers="hover">
+      <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
         <span v-for="player in currentPlayers" v-bind:key="player">{{ player }}<br/></span>
       </b-popover>
 
@@ -64,5 +64,9 @@ export default {
 
   .game-description {
     margin-right: 5px;
+  }
+
+  .popover {
+    margin-left: 10px;
   }
 </style>
