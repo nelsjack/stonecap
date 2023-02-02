@@ -23,7 +23,7 @@ CREATE TABLE post (
     post_id SERIAL,
     user_id int NOT NULL,
     user_game_id int NOT NULL,
-    image varchar (50) NOT NULL,
+    image varchar (1000) NOT NULL,
     title varchar (50) NOT NULL,
     comments varchar (10000) NOT NULL,
     tags varchar (10000) NOT NULL,
