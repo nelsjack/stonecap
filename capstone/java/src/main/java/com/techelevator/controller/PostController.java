@@ -31,10 +31,10 @@ public class PostController {
         Post post = postDao.getPost(postId);
         return post; }
 
-    @RequestMapping(path = "/post/{boardGameId}", method = RequestMethod.GET)
-    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
-        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
-        return posts; }
+//    @RequestMapping(path = "/post/{boardGameId}", method = RequestMethod.GET)
+//    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
+//        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
+//        return posts; }
 
     @RequestMapping(path = "/post/{userId}")
     public List<Post> getAllByUserId(@PathVariable int userId){

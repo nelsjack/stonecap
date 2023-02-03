@@ -63,7 +63,6 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-<<<<<<< HEAD
     }, 
     // {
     //   path: "/post/:postId", 
@@ -77,7 +76,6 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-=======
     },
   {
     path: "/profile/:username",
@@ -93,7 +91,6 @@ const router = new Router({
     component: Wishlist,
     meta: {
       requiresAuth: false
->>>>>>> aaca31f9dc803079ac3662aac9e474fe2ec43bbd
     }
   },
   ]
