@@ -17,10 +17,10 @@ public class JdbcFriendDao implements FriendDao{
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public Friend getFriend(int userId){
+    public Friend getFriend(int friendId){
         Friend friend = null;
-        String sql = "SELECT * from friends WHERE user_id_two = ?";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
+        String sql = "SELECT * from friends WHERE friend_id = ?";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, friendId);
         if(result.next()){
             friend = mapToRowSet(result);
         }
@@ -28,14 +28,17 @@ public class JdbcFriendDao implements FriendDao{
     }
 
     public List<Friend> findAllFriendsById(int userId) {
-        List<Friend> friends = new ArrayList<>();
-        String sql = "SELECT user_id_two FROM friends WHERE user_id_one = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
 
+        List<Friend> friends = new ArrayList<>();
+        String sql = "SELECT * FROM friends WHERE user_id_one = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         while(results.next()) {
+
+            System.out.println(results);
              Friend friend = mapToRowSet(results);
             friends.add(friend);
         }
+
         return friends;
     }
 

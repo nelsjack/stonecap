@@ -18,5 +18,9 @@ export default {
         return http.get(`https://api.boardgameatlas.com/api/search?ids=${boardGameId}&client_id=kYNboY2Iyu`);
     },
 
+    getWishlistBoardGamesByUsername(username) {
+        return http.get(`http://localhost:9000/boardgame/${username}/wishlist`);
+    }
+
   };
   

@@ -5,6 +5,8 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User.vue'
+import ProfilePage from '../views/ProfilePage.vue'
+import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 import Post from '../views/Post.vue'
 
@@ -61,6 +63,7 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+<<<<<<< HEAD
     }, 
     // {
     //   path: "/post/:postId", 
@@ -74,7 +77,25 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+=======
+    },
+  {
+    path: "/profile/:username",
+    name:"Profile",
+    component: ProfilePage,
+    meta: {
+      requiresAuth: false
     }
+  },
+  {
+    path: "/boardgame/:username/wishlist",
+    name: "Wishlist",
+    component: Wishlist,
+    meta: {
+      requiresAuth: false
+>>>>>>> aaca31f9dc803079ac3662aac9e474fe2ec43bbd
+    }
+  },
   ]
 })
 

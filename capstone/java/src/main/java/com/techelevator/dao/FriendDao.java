@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface FriendDao {
 
-    Friend getFriend(int userId);
+    Friend getFriend(int friendId);
 
     List<Friend> findAllFriendsById(int userId);
 

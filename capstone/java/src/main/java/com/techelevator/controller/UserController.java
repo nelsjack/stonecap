@@ -48,7 +48,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(path = "/user/{username}/friends", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/{userId}/friends", method = RequestMethod.GET)
     public List<Integer> findAllFriendsById(@PathVariable int userId){
         List<Integer> friendsUserIds = new ArrayList<>();
         List<Friend> friends = friendDao.findAllFriendsById(userId);
@@ -62,6 +62,11 @@ public class UserController {
     @RequestMapping(path = "/user/{username}/add-friend")
     public Friend createFriendship(@RequestBody Friend newFriend){
         return friendDao.createFriendship(newFriend);
+    }
+
+    @RequestMapping(path = "/user/friends/{friendId}")
+    public Friend createFriendship(@PathVariable int friendId){
+        return friendDao.getFriend(friendId);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
