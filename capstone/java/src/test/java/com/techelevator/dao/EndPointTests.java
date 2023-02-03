@@ -92,10 +92,10 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
         System.out.println(testPost.toString());
 
 //        // When
-//        HttpEntity<Friend> request = new HttpEntity<>(newFriend3to4);
-//        ResponseEntity<Friend> response1 = restTemplate.postForEntity(API_BASE_URL + "/user/"+inputUserId1+"/add-friend",request, Friend.class);
-//        Friend actualFriendship = response1.getBody();
-//        System.out.println(actualFriendship);
+        HttpEntity<Post> request = new HttpEntity<>(testPost);
+        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
+        Post actualPost = response1.getBody();
+        System.out.println(actualPost.toString());
 //        Integer actualUser1 = actualFriendship.getUserIdOne();
 //        Integer actualUser2 = actualFriendship.getUserIdTwo();
 //
