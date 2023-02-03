@@ -30,7 +30,7 @@ CREATE TABLE post (
     rating int NOT NULL,
     public_private boolean NOT NULL,
     CONSTRAINT PK_post PRIMARY KEY (post_id),
-    CONSTRAINT FK_post_users FOREIGN KEY (user_id) REFERENCES users (user_id),
+    CONSTRAINT FK_post_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 --    CONSTRAINT FK_post_boardgames FOREIGN KEY (user_game_id) REFERENCES boardgames (user_game_id)
     );
 
@@ -41,7 +41,7 @@ CREATE TABLE friends (
     CONSTRAINT PK_friends PRIMARY KEY (friend_id),
     CONSTRAINT FK_users_one FOREIGN KEY (user_id_one) REFERENCES users (user_id), 
 	CONSTRAINT FK_users_two FOREIGN KEY (user_id_two) REFERENCES users (user_id)
-)
+);
 
 
 COMMIT TRANSACTION;
