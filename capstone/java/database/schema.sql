@@ -41,7 +41,7 @@ CREATE TABLE friends (
     CONSTRAINT PK_friends PRIMARY KEY (friend_id),
     CONSTRAINT FK_users_one FOREIGN KEY (user_id_one) REFERENCES users (user_id), 
 	CONSTRAINT FK_users_two FOREIGN KEY (user_id_two) REFERENCES users (user_id)
-);
+)
 
 
 COMMIT TRANSACTION;
