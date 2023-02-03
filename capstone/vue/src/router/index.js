@@ -8,6 +8,7 @@ import User from '../views/User.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
+import Post from '../views/Post.vue'
 
 Vue.use(Router)
 
@@ -62,6 +63,20 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    }, 
+    // {
+    //   path: "/post/:postId", 
+    //   name: "Post", 
+    //   component: Post
+    // }, 
+    {
+      path: "/post/create-post", 
+      name: "Post", 
+      component: Post, 
+      meta: {
+        requiresAuth: true
+      }
+
     },
   {
     path: "/profile/:username",
