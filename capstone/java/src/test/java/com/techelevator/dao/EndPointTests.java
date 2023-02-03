@@ -1,6 +1,9 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Friend;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -77,30 +80,58 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 }
     //    TODO  create a post
     //    TODO  get/create friend
+// create friend
+    @Test
+    void givenAUserIsNotFriendsWithAnotherUser_WhenTheUserSendsTheirAndTheNewFriendId_ThenTheFriendEntryIsAddedToFriendsTable() {
+        // Given
+        Friend newFriend3to4 = new Friend(-1,3,4);
+        Integer inputUserId1 = 3;
+        Integer inputUserId2 = 4;
+        // When
+        HttpEntity<Friend> request = new HttpEntity<>(newFriend3to4);
+        ResponseEntity<Friend> response1 = restTemplate.postForEntity(API_BASE_URL + "/user/"+inputUserId1+"/add-friend",request, Friend.class);
+        Friend actualFriendship = response1.getBody();
+        System.out.println(actualFriendship);
+        Integer actualUser1 = actualFriendship.getUserIdOne();
+        Integer actualUser2 = actualFriendship.getUserIdTwo();
 
+
+
+
+        // Then
+        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(actualUser1).isEqualTo(inputUserId1);
+        assertThat(actualUser2).isEqualTo(inputUserId2);
+
+
+    }
    //getfriend
-//   @Test
-//   void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
-//       // Given
-//       String inputuserId1 = "1";
-//       String inputUserId2 = "2";
-//       String expectedUserId1 = "1";
-//       String expectedUserId2 = "2";
-//
-//       // When
-//       System.out.println("before query");
-//       ResponseEntity<ArrayList> response = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
-//       ArrayList listOfFriends = response.getBody();
-//       Integer actualUser1 = (Integer) ((LinkedHashMap) listOfFriends.get(0)).get("userId");
-//       Integer actualUser2 = (Integer) ((LinkedHashMap) listOfFriends.get(1)).get("userId");
-//
-//
-//
-//       // Then
-//       assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//       assertThat(listOfFriends.size()).isEqualTo(1);
-//       assertThat(actualUser1).isEqualTo(expectedUserId1);
-//       assertThat(actualUser2).isEqualTo(expectedUserId2);
-//
-//   }
+   @Test
+   void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
+       // Given
+       String inputuserId1 = "1";
+       String inputUserId2 = "2";
+       Integer expectedUserId1 = 2;
+       Integer expectedUserId2 = 1;
+
+       // When
+       System.out.println("before query");
+       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+       ArrayList listOfFriends1 = response1.getBody();
+       Integer actualUser1 = (Integer) (listOfFriends1.get(0));
+
+       ResponseEntity<ArrayList> response2 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId2+"/friends", ArrayList.class);
+       ArrayList listOfFriends2 = response2.getBody();
+       Integer actualUser2 = (Integer) (listOfFriends2.get(0));
+
+
+
+       // Then
+       assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.OK);
+       assertThat(listOfFriends1.size()).isEqualTo(1);
+       assertThat(actualUser1).isEqualTo(expectedUserId1);
+       assertThat(actualUser2).isEqualTo(expectedUserId2);
+
+
+   }
 }
