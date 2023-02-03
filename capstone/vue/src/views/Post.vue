@@ -1,42 +1,23 @@
 <template>
   <div class="post-home">
-      <h2>{{post.title}}</h2>
-      <post-card :post="this.getPost" />
+      <add-post class="add-post"></add-post>
+      <post-card></post-card>
   </div>
 </template>
 
 <script>
-import postService from "../services/PostService"; 
-import PostCard from "../components/PostCard.vue"; 
+import AddPost from "../components/AddPost.vue"
+import PostCard from "../components/PostCard.vue"
 
 export default {
-    components: {PostCard}, 
+    name: "Post", 
+    components: {AddPost, PostCard}, 
     data(){ 
         return { 
-            getPost: [], 
-
+            Post: []
         }; 
-    }, 
-    created(){ 
-        this.getPost(); 
-    }, 
-    methods: { 
-        getPostByPostId(){ 
-            postService.getPostByPostId(this.$route.params.postId).then((response) => {
-                const post = []; 
-                response.data.forEach((element) =>{
-                    postService.getPostByPostId(element.postId).then((data) => {
-                        console.log(data.data); 
-                        post.push(data.data.post[0]); 
-                    }); 
-            
-            }); 
-            this.getPost = post; 
-            })
-        }
     }
-
-}
+    }
 </script>
 
 <style>
@@ -45,5 +26,8 @@ export default {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+.add-post {
+    justify-content: left;
 }
 </style>

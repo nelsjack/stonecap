@@ -10,14 +10,16 @@ export default {
         return http.get(`http://localhost:9000/post/${postId}`); 
     }, 
 
-    getAllByBoardGame(boardGameId){
-        return http.get(`http://localhost:9000/post/${boardGameId}`); 
-    }, 
+    // getAllByBoardGame(boardGameId){
+    //     return http.get(`http://localhost:9000/post/${boardGameId}`); 
+    // }, 
 
     getAllByUserId (userId) {
         return http.get(`http://localhost:9000/post/${userId}`); 
+    }, 
+
+    createNewPost(post) {
+        return http.post(`http://localhost:9000/post/create-post`, post); 
     }
-
-
 
 }
