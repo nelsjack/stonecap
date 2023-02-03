@@ -18,4 +18,8 @@ export default {
 </script>
 
 <style>
+    .wishlist-game-card {
+       width: 75%;
+       margin-top: 1em; 
+    }
 </style>
