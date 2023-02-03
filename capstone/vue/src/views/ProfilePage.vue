@@ -1,7 +1,10 @@
 <template>
-  <div>
-    <game-card :games="this.playedGames">  </game-card>
-    <!-- <post-card> </post-card> -->
+  <div class="profile-page">
+    <div class="game-collection">
+      <game-card :games="this.playedGames"> </game-card>
+      <!-- <post-card> </post-card> -->
+
+    </div>
   </div>
 </template>
 
@@ -10,12 +13,12 @@ import boardGameService from "../services/BoardGameService";
 //import PostCard from "../components/PostCard.vue";
 import GameCard from "../components/GameCard.vue";
 export default {
- name:"Profile",
- components: {
-       GameCard, 
-       //PostCard
-        },
-        data() {
+  name: "Profile",
+  components: {
+    GameCard,
+    //PostCard
+  },
+  data() {
     return {
       playedGames: [],
     };
@@ -45,5 +48,10 @@ export default {
 </script>
 
 <style>
-
+.profile-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 </style>
