@@ -64,6 +64,11 @@ public class UserController {
         return friendDao.createFriendship(newFriend);
     }
 
+    @RequestMapping(path = "/user/friends/{friendId}")
+    public Friend createFriendship(@PathVariable int friendId){
+        return friendDao.getFriend(friendId);
+    }
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/user/{username}/remove-friend", method = RequestMethod.DELETE)
     public void deleteFriend(@PathVariable int userId){
