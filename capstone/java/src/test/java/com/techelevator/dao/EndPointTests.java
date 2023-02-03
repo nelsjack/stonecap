@@ -2,6 +2,8 @@ package com.techelevator.dao;
 
 import com.techelevator.model.Friend;
 import org.junit.jupiter.api.Test;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -81,27 +83,25 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 // create friend
     @Test
     void givenAUserIsNotFriendsWithAnotherUser_WhenTheUserSendsTheirAndTheNewFriendId_ThenTheFriendEntryIsAddedToFriendsTable() {
-//        // Given
-//        Friend newFriend3to4 = new Friend(-1,3,4);
-//
-//
-//        // When
-//        System.out.println("before query");
-//        ResponseEntity<Friend> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", Friend.class);
-//        Friend actualFriendship = response1.getBody();
-//        Integer actualUser1 = actualFriendship.getUserIdOne();
-//        Integer actualUser2 = actualFriendship.getUserIdTwo();
-//        ResponseEntity<ArrayList> response2 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId2+"/friends", ArrayList.class);
-//        ArrayList listOfFriends2 = response2.getBody();
-//        Integer actualUser2 = (Integer) (listOfFriends2.get(0));
-//
-//
-//
-//        // Then
-//        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.OK);
-//        assertThat(listOfFriends1.size()).isEqualTo(1);
-//        assertThat(actualUser1).isEqualTo(expectedUserId1);
-//        assertThat(actualUser2).isEqualTo(expectedUserId2);
+        // Given
+        Friend newFriend3to4 = new Friend(-1,3,4);
+        Integer inputUserId1 = 3;
+        Integer inputUserId2 = 4;
+        // When
+        HttpEntity<Friend> request = new HttpEntity<>(newFriend3to4);
+        ResponseEntity<Friend> response1 = restTemplate.postForEntity(API_BASE_URL + "/user/"+inputUserId1+"/add-friend",request, Friend.class);
+        Friend actualFriendship = response1.getBody();
+        System.out.println(actualFriendship);
+        Integer actualUser1 = actualFriendship.getUserIdOne();
+        Integer actualUser2 = actualFriendship.getUserIdTwo();
+
+
+
+
+        // Then
+        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(actualUser1).isEqualTo(inputUserId1);
+        assertThat(actualUser2).isEqualTo(inputUserId2);
 
 
     }
