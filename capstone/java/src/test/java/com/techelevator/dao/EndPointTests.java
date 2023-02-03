@@ -79,28 +79,32 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     //    TODO  get/create friend
 
    //getfriend
-//   @Test
-//   void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
-//       // Given
-//       String inputuserId1 = "1";
-//       String inputUserId2 = "2";
-//       String expectedUserId1 = "1";
-//       String expectedUserId2 = "2";
-//
-//       // When
-//       System.out.println("before query");
-//       ResponseEntity<ArrayList> response = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
-//       ArrayList listOfFriends = response.getBody();
-//       Integer actualUser1 = (Integer) ((LinkedHashMap) listOfFriends.get(0)).get("userId");
-//       Integer actualUser2 = (Integer) ((LinkedHashMap) listOfFriends.get(1)).get("userId");
-//
-//
-//
-//       // Then
-//       assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
-//       assertThat(listOfFriends.size()).isEqualTo(1);
-//       assertThat(actualUser1).isEqualTo(expectedUserId1);
-//       assertThat(actualUser2).isEqualTo(expectedUserId2);
-//
-//   }
+   @Test
+   void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
+       // Given
+       String inputuserId1 = "1";
+       String inputUserId2 = "2";
+       Integer expectedUserId1 = 2;
+       Integer expectedUserId2 = 1;
+
+       // When
+       System.out.println("before query");
+       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+       ArrayList listOfFriends1 = response1.getBody();
+       Integer actualUser1 = (Integer) (listOfFriends1.get(0));
+
+       ResponseEntity<ArrayList> response2 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId2+"/friends", ArrayList.class);
+       ArrayList listOfFriends2 = response2.getBody();
+       Integer actualUser2 = (Integer) (listOfFriends2.get(0));
+
+
+
+       // Then
+       assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.OK);
+       assertThat(listOfFriends1.size()).isEqualTo(1);
+       assertThat(actualUser1).isEqualTo(expectedUserId1);
+       assertThat(actualUser2).isEqualTo(expectedUserId2);
+
+
+   }
 }
