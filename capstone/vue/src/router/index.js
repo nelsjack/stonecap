@@ -6,6 +6,7 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User.vue'
 import ProfilePage from '../views/ProfilePage.vue'
+import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 
 Vue.use(Router)
@@ -66,6 +67,14 @@ const router = new Router({
     path: "/profile/:username",
     name:"Profile",
     component: ProfilePage,
+    meta: {
+      requiresAuth: false
+    }
+  },
+  {
+    path: "/boardgame/:username/wishlist",
+    name: "Wishlist",
+    component: Wishlist,
     meta: {
       requiresAuth: false
     }
