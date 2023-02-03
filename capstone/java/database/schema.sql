@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, boardgames, post, friends;
+DROP TABLE IF EXISTS users, boardgames, posts, friends;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -19,7 +19,7 @@ CREATE TABLE boardgames (
     CONSTRAINT FK_boardgames_users FOREIGN KEY (user_id) REFERENCES users (user_id)
 );
 
-CREATE TABLE post (
+CREATE TABLE posts (
     post_id SERIAL,
     user_id int NOT NULL,
 --    user_game_id int NOT NULL,

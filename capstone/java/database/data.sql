@@ -23,7 +23,12 @@ INSERT INTO friends (user_id_one, user_id_two) VALUES ('1','2');
 INSERT INTO friends (user_id_one, user_id_two) VALUES ('2','1');
 
 --Create a posts
+<<<<<<< HEAD
 INSERT INTO post (user_id, image, title, comments, tags, rating, public_private) VALUES ('1','https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__imagepage/img/-UKJcRC6XhCjZ7JzC6u7m9JRq88=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2977400.jpg', 'Scythe Test', 'Test Comment', 'test, testtest', '4', true);
 INSERT INTO post (user_id, image, title, comments, tags, rating, public_private) VALUES ('1','https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__imagepage/img/-UKJcRC6XhCjZ7JzC6u7m9JRq88=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2977400.jpg', 'Sythe Private Test', 'Test Comment Private', 'test, testtest', '4', false);
+=======
+INSERT INTO posts (user_id, user_game_id, image, title, comments, tags, rating, public_private) VALUES ('1','2','https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__imagepage/img/-UKJcRC6XhCjZ7JzC6u7m9JRq88=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2977400.jpg', 'Scythe Test', 'Test Comment', 'test, testtest', '4', true);
+INSERT INTO posts (user_id, user_game_id, image, title, comments, tags, rating, public_private) VALUES ('1','2','https://cf.geekdo-images.com/hyqVOyVvyUAVu3PmlP9scg__imagepage/img/-UKJcRC6XhCjZ7JzC6u7m9JRq88=/fit-in/900x600/filters:no_upscale():strip_icc()/pic2977400.jpg', 'Sythe Private Test', 'Test Comment Private', 'test, testtest', '4', false);
+>>>>>>> main
 
 COMMIT TRANSACTION;

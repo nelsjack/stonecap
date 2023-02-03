@@ -26,17 +26,24 @@ public class PostController {
         this.friendDao = friendDao;
     }
 
-    @RequestMapping(path = "/post/{postId}", method = RequestMethod.GET)
+    @RequestMapping(path = "/post/post/{postId}", method = RequestMethod.GET)
     public Post getPost (@PathVariable int postId){
         Post post = postDao.getPost(postId);
         return post; }
 
+<<<<<<< HEAD
 //    @RequestMapping(path = "/post/{boardGameId}", method = RequestMethod.GET)
 //    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
 //        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
 //        return posts; }
+=======
+    @RequestMapping(path = "/post/boardgame/{boardGameId}", method = RequestMethod.GET)
+    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
+        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
+        return posts; }
+>>>>>>> main
 
-    @RequestMapping(path = "/post/{userId}")
+    @RequestMapping(path = "/post/user/{userId}")
     public List<Post> getAllByUserId(@PathVariable int userId){
         List<Post> posts = postDao.getAllByUserId(userId);
         return posts; }
