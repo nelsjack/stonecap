@@ -76,6 +76,10 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
     },
   {
     path: "/profile/:username",
