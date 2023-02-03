@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Friend;
+import com.techelevator.model.Post;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +11,9 @@ import org.springframework.web.client.RestTemplate;
 
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 //TODO fix raw use of parameterized classes
@@ -79,6 +82,34 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 
 }
     //    TODO  create a post
+    @Test
+    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
+
+        // Given
+        List<String> testTags = Arrays.asList("tag1","tag2");
+
+        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
+        System.out.println(testPost.toString());
+
+//        // When
+//        HttpEntity<Friend> request = new HttpEntity<>(newFriend3to4);
+//        ResponseEntity<Friend> response1 = restTemplate.postForEntity(API_BASE_URL + "/user/"+inputUserId1+"/add-friend",request, Friend.class);
+//        Friend actualFriendship = response1.getBody();
+//        System.out.println(actualFriendship);
+//        Integer actualUser1 = actualFriendship.getUserIdOne();
+//        Integer actualUser2 = actualFriendship.getUserIdTwo();
+//
+//
+//
+//
+//        // Then
+//        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+//        assertThat(actualUser1).isEqualTo(inputUserId1);
+//        assertThat(actualUser2).isEqualTo(inputUserId2);
+
+
+    }
+
     //    TODO  get/create friend
 // create friend
     @Test
