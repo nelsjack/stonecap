@@ -6,7 +6,8 @@
       <p class="game-description">{{ game.description }}</p>
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
-        <span v-for="player in currentPlayers" v-bind:key="player">{{ player }}<br/></span>
+        <div v-for="player in currentPlayers" v-bind:key="player" v-on:click="routeToUserProfile(player)">
+          {{ player }}<br/> </div>
       </b-popover>
 
     </div>
@@ -30,6 +31,10 @@ export default {
           userService.getUsersByBoardGameId(boardGameId).then(response => {
             this.currentPlayers = response.data;
           })
+        },
+        routeToUserProfile(user) {
+          this.$router.push({name:'Profile', params: {username: user}})
+          this.$router.go()
         }
       }
 };
