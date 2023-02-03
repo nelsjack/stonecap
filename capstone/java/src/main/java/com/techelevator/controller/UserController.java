@@ -48,7 +48,7 @@ public class UserController {
         return user;
     }
 
-    @RequestMapping(path = "/user/{username}/friends", method = RequestMethod.GET)
+    @RequestMapping(path = "/user/{userId}/friends", method = RequestMethod.GET)
     public List<Integer> findAllFriendsById(@PathVariable int userId){
         List<Integer> friendsUserIds = new ArrayList<>();
         List<Friend> friends = friendDao.findAllFriendsById(userId);

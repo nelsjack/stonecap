@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+//TODO fix raw use of parameterized classes
 
 //https://www.baeldung.com/integration-testing-a-rest-api
 public class EndPointTests {
@@ -36,8 +36,8 @@ public class EndPointTests {
     void givenAUsernameHasWishlistGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfBoardGamesWishlistIsReturned() {
         // Given
         String username = "user1";
-        String expectedEoardgame1 = "3IPVIROfvl";
-        String expectedEoardgame2 = "OIXt3DmJU0";
+        String expectedBoardgame1 = "3IPVIROfvl";
+        String expectedBoardgame2 = "OIXt3DmJU0";
 
         // When
         ResponseEntity<ArrayList> response = restTemplate.getForEntity(API_BASE_URL + "/boardgame/"+username+"/wishlist", ArrayList.class);
@@ -49,8 +49,8 @@ public class EndPointTests {
         // Then
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(listOfGames.size()).isEqualTo(2);
-        assertThat(actualGame1).isEqualTo(expectedEoardgame1);
-        assertThat(actualGame2).isEqualTo(expectedEoardgame2);
+        assertThat(actualGame1).isEqualTo(expectedBoardgame1);
+        assertThat(actualGame2).isEqualTo(expectedBoardgame2);
 
     }
 //    TODO Played Games by user name
@@ -58,8 +58,8 @@ public class EndPointTests {
 void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfBoardGamesPlayedIsReturned() {
     // Given
     String username = "user1";
-    String expectedEoardgame1 = "TAAifFP590";
-    String expectedEoardgame2 = "yqR4PtpO8X";
+    String expectedBoardgame1 = "TAAifFP590";
+    String expectedBoardgame2 = "yqR4PtpO8X";
 
     // When
     ResponseEntity<ArrayList> response = restTemplate.getForEntity(API_BASE_URL + "/boardgame/"+username+"/played", ArrayList.class);
@@ -71,13 +71,36 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     // Then
     assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     assertThat(listOfGames.size()).isEqualTo(2);
-    assertThat(actualGame1).isEqualTo(expectedEoardgame1);
-    assertThat(actualGame2).isEqualTo(expectedEoardgame2);
+    assertThat(actualGame1).isEqualTo(expectedBoardgame1);
+    assertThat(actualGame2).isEqualTo(expectedBoardgame2);
 
 }
     //    TODO  create a post
     //    TODO  get/create friend
 
    //getfriend
-
+//   @Test
+//   void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
+//       // Given
+//       String inputuserId1 = "1";
+//       String inputUserId2 = "2";
+//       String expectedUserId1 = "1";
+//       String expectedUserId2 = "2";
+//
+//       // When
+//       System.out.println("before query");
+//       ResponseEntity<ArrayList> response = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+//       ArrayList listOfFriends = response.getBody();
+//       Integer actualUser1 = (Integer) ((LinkedHashMap) listOfFriends.get(0)).get("userId");
+//       Integer actualUser2 = (Integer) ((LinkedHashMap) listOfFriends.get(1)).get("userId");
+//
+//
+//
+//       // Then
+//       assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
+//       assertThat(listOfFriends.size()).isEqualTo(1);
+//       assertThat(actualUser1).isEqualTo(expectedUserId1);
+//       assertThat(actualUser2).isEqualTo(expectedUserId2);
+//
+//   }
 }
