@@ -96,15 +96,15 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
         ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
         Post actualPost = response1.getBody();
         System.out.println(actualPost.toString());
-//        Integer actualUser1 = actualFriendship.getUserIdOne();
+        Integer actualUser1 = actualPost.getUserId();
 //        Integer actualUser2 = actualFriendship.getUserIdTwo();
 //
 //
 //
 //
 //        // Then
-//        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-//        assertThat(actualUser1).isEqualTo(inputUserId1);
+        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(actualUser1).isEqualTo(testPost.getUserId());
 //        assertThat(actualUser2).isEqualTo(inputUserId2);
 
 
