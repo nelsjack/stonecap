@@ -140,14 +140,14 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
    @Test
    void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
        // Given
-       String inputuserId1 = "1";
+       String inputUserId1 = "1";
        String inputUserId2 = "2";
        Integer expectedUserId1 = 2;
        Integer expectedUserId2 = 1;
 
        // When
        System.out.println("before query");
-       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId1+"/friends", ArrayList.class);
        ArrayList listOfFriends1 = response1.getBody();
        Integer actualUser1 = (Integer) (listOfFriends1.get(0));
 
