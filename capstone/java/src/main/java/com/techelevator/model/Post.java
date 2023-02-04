@@ -9,14 +9,14 @@ public class Post {
     private String imageUrl;
     private String title;
     private String comments;
-    private List<String> tags;
+    private String tags;
     private int rating;
     private boolean publicPrivate;
 
     public Post() {
     }
 
-    public Post(int postId, int userId, int userGameId, String imageUrl, String title, String comments, List<String> tags, int rating, boolean publicPrivate) {
+    public Post(int postId, int userId, int userGameId, String imageUrl, String title, String comments, String tags, int rating, boolean publicPrivate) {
         this.postId = postId;
         this.userId = userId;
         this.userGameId = userGameId;
@@ -76,11 +76,11 @@ public class Post {
         this.comments = comments;
     }
 
-    public List<String> getTags() {
+    public String getTags() {
         return tags;
     }
 
-    public void setTags(List<String> tags) {
+    public void setTags(String tags) {
         this.tags = tags;
     }
 

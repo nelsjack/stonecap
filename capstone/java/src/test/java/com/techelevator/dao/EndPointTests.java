@@ -86,7 +86,7 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
 
         // Given
-        List<String> testTags = Arrays.asList("tag1","tag2");
+        String testTags = "Tag1, Tag2";
 
         Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
         System.out.println(testPost.toString());
