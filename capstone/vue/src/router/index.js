@@ -9,6 +9,7 @@ import ProfilePage from '../views/ProfilePage.vue'
 import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 import Post from '../views/Post.vue'
+import Friends from '../views/Friends.vue'
 
 Vue.use(Router)
 
@@ -91,6 +92,14 @@ const router = new Router({
       component: Wishlist,
       meta: {
         requiresAuth: false
+      }
+    },
+    {
+      path: "/friends",
+      name: "Friends",
+      component: Friends,
+      meta: {
+        requiresAuth: true
       }
     },
   ]

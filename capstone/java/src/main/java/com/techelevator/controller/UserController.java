@@ -57,7 +57,21 @@ public class UserController {
         }
         return friendsUserIds;
     }
-
+    @RequestMapping(path = "/user/MyFriends", method = RequestMethod.GET)
+    public List<User> findAllFriendsById(Principal principle){
+        String username = principle.getName();
+        int userId= userDao.findByUsername(username).getId();
+        List<Integer> friendsUserIds = new ArrayList<>();
+        List<Friend> friends = friendDao.findAllFriendsById(userId);
+        List<User> users = new ArrayList<>();
+        for (Friend friend : friends) {
+            friendsUserIds.add(friend.getUserIdTwo());
+        }
+        for (int Id :friendsUserIds){
+            users.add(userDao.getUserById(Id));
+        }
+        return users;
+    }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/user/{username}/add-friend")
     public Friend createFriendship(@RequestBody Friend newFriend){
@@ -96,5 +110,6 @@ public class UserController {
 
         return userList;
     }
+
 
 }
