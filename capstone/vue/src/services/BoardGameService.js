@@ -20,6 +20,10 @@ export default {
 
     getWishlistBoardGamesByUsername(username) {
         return http.get(`http://localhost:9000/boardgame/${username}/wishlist`);
+    },
+
+    saveGameForUser(boardgame) {
+        return http.post('http://localhost:9000/boardgame/save-game', boardgame);
     }
 
   };
