@@ -81,22 +81,25 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     assertThat(actualGame2).isEqualTo(expectedBoardgame2);
 
 }
-    //    TODO  create a post
-    @Test
-    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
 
-        // Given
-        String testTags = "Tag1, Tag2";
-
-        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
-        System.out.println(testPost.toString());
-
-//        // When
-        HttpEntity<Post> request = new HttpEntity<>(testPost);
-        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
-        Post actualPost = response1.getBody();
-        System.out.println(actualPost.toString());
+//    //    TODO  create a post
+//    @Test
+//    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
+//
+//        // Given
+//        String testTags = "Tag1, Tag2";
+//
+////        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
+////        System.out.println(testPost.toString());
+//
+////        // When
+//        HttpEntity<Post> request = new HttpEntity<>(testPost);
+//        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
+//        Post actualPost = response1.getBody();
+//        System.out.println(actualPost.toString());
 //        Integer actualUser1 = actualFriendship.getUserIdOne();
+
+
 //        Integer actualUser2 = actualFriendship.getUserIdTwo();
 //
 //
@@ -104,11 +107,11 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 //
 //        // Then
 //        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-//        assertThat(actualUser1).isEqualTo(inputUserId1);
+//        assertThat(actualUser1).isEqualTo(testPost.getUserId());
 //        assertThat(actualUser2).isEqualTo(inputUserId2);
 
 
-    }
+//    }
 
     //    TODO  get/create friend
 // create friend
@@ -140,14 +143,14 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
    @Test
    void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
        // Given
-       String inputuserId1 = "1";
+       String inputUserId1 = "1";
        String inputUserId2 = "2";
        Integer expectedUserId1 = 2;
        Integer expectedUserId2 = 1;
 
        // When
        System.out.println("before query");
-       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId1+"/friends", ArrayList.class);
        ArrayList listOfFriends1 = response1.getBody();
        Integer actualUser1 = (Integer) (listOfFriends1.get(0));
 

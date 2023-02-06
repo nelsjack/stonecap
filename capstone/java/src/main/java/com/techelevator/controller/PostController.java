@@ -8,6 +8,7 @@ import com.techelevator.model.Post;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,10 +32,12 @@ public class PostController {
         Post post = postDao.getPost(postId);
         return post; }
 
-    @RequestMapping(path = "/post/boardgame/{boardGameId}", method = RequestMethod.GET)
-    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
-        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
-        return posts; }
+
+//    @RequestMapping(path = "/post/{boardGameId}", method = RequestMethod.GET)
+//    public List<Post> getAllByBoardGame(@PathVariable int boardGameId){
+//        List<Post> posts = postDao.getAllByBoardGame(boardGameId);
+//        return posts; }
+
 
     @RequestMapping(path = "/post/user/{userId}")
     public List<Post> getAllByUserId(@PathVariable int userId){
@@ -42,9 +45,13 @@ public class PostController {
         return posts; }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/create-post")
-    public Post createNewPost(@RequestBody Post createPost){
+    @PostMapping(path = "/create-post")
+    public Post createNewPost(@RequestBody Post createPost, Principal principal){
+        int userId = userDao.findIdByUsername(principal.getName());
+        createPost.setUserId(userId);
         return postDao.createNewPost(createPost); }
+
+
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @RequestMapping(path = "/delete-post", method = RequestMethod.DELETE)

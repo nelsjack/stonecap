@@ -63,37 +63,36 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }, 
+    },
     // {
     //   path: "/post/:postId", 
     //   name: "Post", 
     //   component: Post
     // }, 
     {
-      path: "/post/create-post", 
-      name: "Post", 
-      component: Post, 
+      path: "/create-post",
+      name: "Post",
+      component: Post,
       meta: {
         requiresAuth: true
       }
-
     },
-  {
-    path: "/profile/:username",
-    name:"Profile",
-    component: ProfilePage,
-    meta: {
-      requiresAuth: false
-    }
-  },
-  {
-    path: "/boardgame/:username/wishlist",
-    name: "Wishlist",
-    component: Wishlist,
-    meta: {
-      requiresAuth: false
-    }
-  },
+    {
+      path: "/profile/:username",
+      name: "Profile",
+      component: ProfilePage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/boardgame/:username/wishlist",
+      name: "Wishlist",
+      component: Wishlist,
+      meta: {
+        requiresAuth: false
+      }
+    },
   ]
 })
 

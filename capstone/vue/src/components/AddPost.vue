@@ -1,6 +1,6 @@
 <template>
   <div class="form-card">
-    <b-form class="form-buttons"   @submit="onSubmit" @reset="onReset">
+    <b-form class="form-buttons"   v-on:submit.prevent="onSubmit" @reset="onReset">
       <b-form-group
         class="form-title"
         id="input-group-1"
@@ -23,8 +23,15 @@
         label="Rating:"
         v-model="form.rating"
         variant="warning"
-      ></b-form-rating>
+      >
+       <b-form-input
+          v-model="form.rating"
+          type="int"
+          required
+        ></b-form-input></b-form-rating>
 </div>
+
+
       <b-form-group
         class="form-comments"
         id="input-group-2"
@@ -84,32 +91,33 @@ export default {
   data() {
     return {
       form: {
+       // user: this.$store.user.id, 
+       userId: 1, 
         title: "",
-        rating: "",
+        rating: 0,
         comments: "",
         imageURL: "",
         tags: [],
         checked: [],
+        publicPrivate: ""
       },
     };
   },
   methods: {
     onSubmit() {
+      console.log("post"); 
       postService
-        .create(this.post)
+        .createNewPost(this.post)
         .then((response) => {
           if (response.status === 201) {
-            this.$router.push("/");
+            // this.$router.push("/");
           }
         })
-        .catch((error) => {
-          console.error(error);
-        });
     },
     onReset(event) {
       event.preventDefault();
       this.form.title = "";
-      this.form.rating = "";
+      this.form.rating = 0;
       this.form.imageURL = "";
       this.tags = null;
       this.form.checked = [];

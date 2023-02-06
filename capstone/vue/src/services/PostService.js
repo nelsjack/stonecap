@@ -19,7 +19,7 @@ export default {
     }, 
 
     createNewPost(post) {
-        return http.post(`http://localhost:9000/post/create-post`, post); 
+        return http.post(`http://localhost:9000/create-post`, post); 
     }
 
 }

@@ -1,10 +1,16 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class BoardGame {
 
+    @JsonProperty("user_game_id")
     private int userGameId;
+    @JsonProperty ("user_id")
     private int userId;
+    @JsonProperty ("board_game_id")
     private String boardGameId;
+    @JsonProperty ("save_type")
     private String saveType;
 
     public BoardGame() {

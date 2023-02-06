@@ -1,8 +1,13 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Friend {
+    @JsonProperty ("friend_id")
     private int friendshipId;
+    @JsonProperty ("user_id_one")
     private int userIdOne;
+    @JsonProperty ("user_id_two")
     private int userIdTwo;
 
     public Friend() {

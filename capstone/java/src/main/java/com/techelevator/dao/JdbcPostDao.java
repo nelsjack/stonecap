@@ -24,16 +24,16 @@ public class JdbcPostDao implements PostDao{
         return post;
    }
 
-    public List<Post> getAllByBoardGame(int boardGameId) {
-        List<Post> postsByBoardGame = new ArrayList<>();
-        String sql = "SELECT * FROM posts WHERE user_game_id IN (SELECT user_game_id FROM boardgames WHERE boardgame_id = ?";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
-        while(results.next()){
-            Post post = mapRowToPost(results);
-            postsByBoardGame.add(post);
-        }
-        return postsByBoardGame;
-    }
+//    public List<Post> getAllByBoardGame(int boardGameId) {
+//        List<Post> postsByBoardGame = new ArrayList<>();
+//        String sql = "SELECT * FROM posts WHERE user_game_id IN (SELECT user_game_id FROM boardgames WHERE boardgame_id = ?";
+//        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, boardGameId);
+//        while(results.next()){
+//            Post post = mapRowToPost(results);
+//            postsByBoardGame.add(post);
+//        }
+//        return postsByBoardGame;
+//    }
 
     public List<Post> getAllByUserId(int userId){
         List<Post> postsByUser = new ArrayList<>();
@@ -49,8 +49,9 @@ public class JdbcPostDao implements PostDao{
     public Post createNewPost(Post createPost) {
         Post newPost = null;
 //        TODO check the names of the columns in insert SQL
-        String sql = "INSERT INTO posts (image, title, comments, tags, rating, public_private) VALUES (?, ?, ?, ?, ?, ?) RETURNING post_id";
-        Integer postId = jdbcTemplate.queryForObject(sql, Integer.class, createPost.getImageUrl(), createPost.getTitle(), createPost.getComments(), createPost.getTags(), createPost.getRating(), createPost.isPublicPrivate());
+        String sql = "INSERT INTO posts (user_id, image, title, comments, tags, rating, public_private) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING post_id";
+        Integer postId = jdbcTemplate.queryForObject(sql, Integer.class, createPost.getUserId(), createPost.getImageUrl(), createPost.getTitle(), createPost.getComments(), createPost.getTags(), createPost.getRating(), createPost.isPublicPrivate());
+
         newPost = getPost(postId);
         return newPost;
     }
@@ -75,7 +76,7 @@ public class JdbcPostDao implements PostDao{
         Post post = new Post();
         post.setPostId(rs.getInt("post_id"));
         post.setUserId(rs.getInt("user_id"));
-        post.setUserGameId(rs.getInt("user_game_id"));
+//        post.setUserGameId(rs.getInt("user_game_id"));
         post.setImageUrl(rs.getString("image"));
         post.setTitle(rs.getString("title"));
         post.setComments(rs.getString("comments"));
