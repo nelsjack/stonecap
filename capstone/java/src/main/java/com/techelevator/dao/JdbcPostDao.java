@@ -80,7 +80,7 @@ public class JdbcPostDao implements PostDao{
         post.setImageUrl(rs.getString("image"));
         post.setTitle(rs.getString("title"));
         post.setComments(rs.getString("comments"));
-        post.setTags((String) rs.getObject("tags"));
+        post.setTags(rs.getString("tags"));
         post.setRating(rs.getInt("rating"));
         post.setPublicPrivate(rs.getBoolean("public_private"));
         return post;

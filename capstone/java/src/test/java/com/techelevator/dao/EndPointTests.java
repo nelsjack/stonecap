@@ -83,35 +83,36 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 }
 
 //    //    TODO  create a post
-//    @Test
-//    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
-//
+    @Test
+    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
+
 //        // Given
-//        String testTags = "Tag1, Tag2";
-//
-////        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
-////        System.out.println(testPost.toString());
-//
-////        // When
-//        HttpEntity<Post> request = new HttpEntity<>(testPost);
-//        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
-//        Post actualPost = response1.getBody();
-//        System.out.println(actualPost.toString());
-//        Integer actualUser1 = actualFriendship.getUserIdOne();
+        String testTags = "Tag1, Tag2";
+
+        Post testPost = new Post(-1,1,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
+//        System.out.println(testPost.toString());
+HttpHeaders headers = getHeaders();
 
 
-//        Integer actualUser2 = actualFriendship.getUserIdTwo();
-//
-//
-//
-//
-//        // Then
-//        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-//        assertThat(actualUser1).isEqualTo(testPost.getUserId());
-//        assertThat(actualUser2).isEqualTo(inputUserId2);
+
+    ////        // When
+        HttpEntity<Post> request = new HttpEntity<>(testPost,headers);
+        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
+        Post actualPost = response1.getBody();
+        System.out.println(actualPost);
+        System.out.println(actualPost.toString());
+        Integer actualUser1 = actualPost.getUserId();
 
 
-//    }
+
+
+        // Then
+        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
+        assertThat(actualUser1).isEqualTo(testPost.getUserId());
+
+
+
+    }
 
     //    TODO  get/create friend
 // create friend
@@ -168,4 +169,10 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 
 
    }
+
+    public HttpHeaders getHeaders() {
+        HttpHeaders header =new HttpHeaders();
+        header.setBearerAuth("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU3ODM2Mzd9.pleoMu2aJmmHb7eCYQ581B0zrAKDIA3cVlExp3hVqWAt-ykZnuvAR3t0WCBDcGm2jz-dVCUY9c_RjThFmP2EWA");
+        return header;
+    }
 }

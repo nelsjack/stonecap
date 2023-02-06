@@ -54,8 +54,21 @@
           placeholder="Image URL"
           required
         ></b-form-input>
+        
       </b-form-group>
-<div class="form-tags">
+
+  <b-form-group 
+      class="form-tags" id="input-group-3" label="Tags:" label-for="input-3">
+        <b-form-input
+          id="input-3"
+          v-model="form.tags"
+          placeholder="Tags"
+          required
+        ></b-form-input>
+        
+      </b-form-group>
+
+<!-- <div class="form-tags">
       <label for="tags-separators">Tags: </label>
       <b-form-tags
       
@@ -65,7 +78,8 @@
         placeholder="Enter new tags separated by space, comma or semicolon"
         no-add-on-enter
       ></b-form-tags>
-</div>
+</div> -->
+
       <b-form-group id="input-group-4" v-slot="{ ariaDescribedby }">
         <b-form-checkbox-group
         class="form-public"
@@ -91,13 +105,12 @@ export default {
   data() {
     return {
       form: {
-       // user: this.$store.user.id, 
-       userId: 1, 
+       //user: this.$store.user.id, 
         title: "",
         rating: 0,
         comments: "",
-        imageURL: "",
-        tags: [],
+        image: "",
+        tags: "",
         checked: [],
         publicPrivate: ""
       },
@@ -107,7 +120,7 @@ export default {
     onSubmit() {
       console.log("post"); 
       postService
-        .createNewPost(this.post)
+        .createNewPost(this.form)
         .then((response) => {
           if (response.status === 201) {
             // this.$router.push("/");
@@ -118,8 +131,9 @@ export default {
       event.preventDefault();
       this.form.title = "";
       this.form.rating = 0;
-      this.form.imageURL = "";
-      this.tags = null;
+      this.form.comments = ""; 
+      this.form.image = "";
+      this.tags = "";
       this.form.checked = [];
       this.show = false;
       this.$nextTick(() => {
