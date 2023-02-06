@@ -70,7 +70,7 @@ const router = new Router({
     //   component: Post
     // }, 
     {
-      path: "/post/create-post",
+      path: "/create-post",
       name: "Post",
       component: Post,
       meta: {

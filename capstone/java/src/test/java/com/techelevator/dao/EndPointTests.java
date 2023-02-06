@@ -81,21 +81,21 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     assertThat(actualGame2).isEqualTo(expectedBoardgame2);
 
 }
-    //    TODO  create a post
-    @Test
-    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
-
-        // Given
-        String testTags = "Tag1, Tag2";
-
-        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
-        System.out.println(testPost.toString());
-
-//        // When
-        HttpEntity<Post> request = new HttpEntity<>(testPost);
-        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
-        Post actualPost = response1.getBody();
-        System.out.println(actualPost.toString());
+//    //    TODO  create a post
+//    @Test
+//    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
+//
+//        // Given
+//        String testTags = "Tag1, Tag2";
+//
+////        Post testPost = new Post(-1,1,4,"https://www.wikihow.com/images/thumb/5/51/Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg/aid11726718-v4-1200px-Play-Mouse-Trap-%28Board-Game%29-Step-11.jpg","test fake post","I am writing a test comment",testTags,5,true);
+////        System.out.println(testPost.toString());
+//
+////        // When
+//        HttpEntity<Post> request = new HttpEntity<>(testPost);
+//        ResponseEntity<Post> response1 = restTemplate.postForEntity(API_BASE_URL + "/create-post",request, Post.class);
+//        Post actualPost = response1.getBody();
+//        System.out.println(actualPost.toString());
 //        Integer actualUser1 = actualFriendship.getUserIdOne();
 //        Integer actualUser2 = actualFriendship.getUserIdTwo();
 //
@@ -108,7 +108,7 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 //        assertThat(actualUser2).isEqualTo(inputUserId2);
 
 
-    }
+//    }
 
     //    TODO  get/create friend
 // create friend

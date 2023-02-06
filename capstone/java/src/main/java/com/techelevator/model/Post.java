@@ -1,25 +1,31 @@
 package com.techelevator.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class Post {
+    @JsonProperty ("post_id")
     private int postId;
+    @JsonProperty ("user_id")
     private int userId;
-    private int userGameId;
+   // private int userGameId;
+   @JsonProperty ("image")
     private String imageUrl;
     private String title;
     private String comments;
     private String tags;
     private int rating;
+    @JsonProperty ("public_private")
     private boolean publicPrivate;
 
     public Post() {
     }
 
-    public Post(int postId, int userId, int userGameId, String imageUrl, String title, String comments, String tags, int rating, boolean publicPrivate) {
+    public Post(int postId, int userId, String imageUrl, String title, String comments, String tags, int rating, boolean publicPrivate) {
         this.postId = postId;
         this.userId = userId;
-        this.userGameId = userGameId;
+       // this.userGameId = userGameId;
         this.imageUrl = imageUrl;
         this.title = title;
         this.comments = comments;
@@ -44,13 +50,13 @@ public class Post {
         this.userId = userId;
     }
 
-    public int getUserGameId() {
-        return userGameId;
-    }
+//    public int getUserGameId() {
+//        return userGameId;
+//    }
 
-    public void setUserGameId(int userGameId) {
-        this.userGameId = userGameId;
-    }
+//    public void setUserGameId(int userGameId) {
+//        this.userGameId = userGameId;
+//    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -105,7 +111,7 @@ public class Post {
         return "Post{" +
                 "postId=" + postId +
                 ", userId=" + userId +
-                ", userGameId=" + userGameId +
+//                ", userGameId=" + userGameId +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", title='" + title + '\'' +
                 ", comments='" + comments + '\'' +

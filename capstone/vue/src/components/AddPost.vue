@@ -91,18 +91,21 @@ export default {
   data() {
     return {
       form: {
+       // user: this.$store.user.id, 
+       userId: 1, 
         title: "",
         rating: 0,
         comments: "",
         imageURL: "",
         tags: [],
         checked: [],
+        publicPrivate: ""
       },
     };
   },
   methods: {
     onSubmit() {
-      console.log("testing"); 
+      console.log("post"); 
       postService
         .createNewPost(this.post)
         .then((response) => {

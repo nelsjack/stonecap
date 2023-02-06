@@ -49,8 +49,8 @@ public class JdbcPostDao implements PostDao{
     public Post createNewPost(Post createPost) {
         Post newPost = null;
 //        TODO check the names of the columns in insert SQL
-        String sql = "INSERT INTO posts (image, title, comments, tags, rating, public_private) VALUES (?, ?, ?, ?, ?, ?) RETURNING post_id";
-        Integer postId = jdbcTemplate.queryForObject(sql, Integer.class, createPost.getImageUrl(), createPost.getTitle(), createPost.getComments(), createPost.getTags(), createPost.getRating(), createPost.isPublicPrivate());
+        String sql = "INSERT INTO posts (user_id, image, title, comments, tags, rating, public_private) VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING post_id";
+        Integer postId = jdbcTemplate.queryForObject(sql, Integer.class, createPost.getUserId(), createPost.getImageUrl(), createPost.getTitle(), createPost.getComments(), createPost.getTags(), createPost.getRating(), createPost.isPublicPrivate());
         newPost = getPost(postId);
         return newPost;
     }
