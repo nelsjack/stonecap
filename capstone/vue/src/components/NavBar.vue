@@ -30,15 +30,13 @@ export default {
     routeToUserWishlist() {
           this.$router.push({name:'Wishlist', params: {username: this.$store.state.user.username}})
         }, 
-<<<<<<< HEAD
         routeToAllPosts(){
           this.$router.push({name: 'AllPosts' })
-        }
-=======
-    routeToUserProfile () {
-      this.$router.push({name:'Profile', params: {username: this.$store.state.user.username}})
+        },
+        
+        routeToUserProfile () {
+        this.$router.push({name:'Profile', params: {username: this.$store.state.user.username}})
     }
->>>>>>> main
   }
 }
 </script>
