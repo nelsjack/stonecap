@@ -1,20 +1,20 @@
 <template>
   <div class="post-home">
       <add-post class="add-post"></add-post>
-      <post-card></post-card>
+      <users-posts class="users-post"></users-posts>
   </div>
 </template>
 
 <script>
 import AddPost from "../components/AddPost.vue"
-import PostCard from "../components/PostCard.vue"
+import UsersPosts from '../components/UsersPosts.vue';
 
 export default {
     name: "Post", 
-    components: {AddPost, PostCard}, 
+    components: {AddPost, UsersPosts}, 
     data(){ 
         return { 
-            Post: []
+            Post: [], 
         }; 
     }
     }
@@ -23,11 +23,16 @@ export default {
 <style>
 .post-home {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
 }
 .add-post {
+    margin: 5em; 
     justify-content: left;
+}
+.users-posts {
+    margin: 5em; 
+    justify-content: right;
 }
 </style>

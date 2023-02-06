@@ -82,7 +82,7 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 
 }
 
-//    //    TODO  create a post
+//    Post test
     @Test
     void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
 

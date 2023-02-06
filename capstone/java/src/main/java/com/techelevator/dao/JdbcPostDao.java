@@ -72,6 +72,7 @@ public class JdbcPostDao implements PostDao{
         jdbcTemplate.update(sql, updatePost.getTitle(), updatePost.getComments(), updatePost.getTags(), updatePost.getRating(), updatePost.getPostId());
     }
 
+
     private Post mapRowToPost (SqlRowSet rs){
         Post post = new Post();
         post.setPostId(rs.getInt("post_id"));
