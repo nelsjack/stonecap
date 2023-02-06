@@ -2,11 +2,6 @@
   <div>
     <b-card  :id='`${user.id}`' v-for="user in friends" v-bind:key="user.id" >
       <img  :src="game.thumb_url" />
-      <h3 >{{ }}</h3>
-      <p >{{  }}</p>
-      <b-button >Add to Collection</b-button>
-      <b-button >Add to Wishlist</b-button>
-  
 
     </b-card>
     
