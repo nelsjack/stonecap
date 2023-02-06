@@ -1,13 +1,6 @@
 <template>
   <div class="wishlist">
     <h3>Wishlist</h3>
-    <div class="headings">
-      <h5></h5>
-      <h5>Title</h5>
-      <h5># of Plays</h5>
-      <h5>Comments</h5>
-      <h5>Price</h5>
-    </div>
     <wishlist-game-card :games="this.wishlistGames" />
   </div>
 </template>

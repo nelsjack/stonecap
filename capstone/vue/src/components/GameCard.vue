@@ -1,16 +1,18 @@
 <template>
   <div>
-    <div class="game-card" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
+    <b-card class="game-card shadow" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
       <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
+      <b-button class="game-card-button" variant="primary">Add to Collection</b-button>
+      <b-button class="game-card-button" variant="primary">Add to Wishlist</b-button>
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
-        <div v-for="player in currentPlayers" v-bind:key="player" v-on:click="routeToUserProfile(player)">
+        <div class="player-name" v-for="player in currentPlayers" v-bind:key="player" v-on:click="routeToUserProfile(player)">
           {{ player }}<br/> </div>
       </b-popover>
 
-    </div>
+    </b-card>
   </div>
 </template>
 
@@ -23,7 +25,7 @@ export default {
     data() {
       return {
         hover: false,
-        currentPlayers: []
+        currentPlayers: [],
       }
     },
       methods: {
@@ -60,6 +62,7 @@ export default {
     border-radius: 10px;
     margin-top: 10px;
     background-color: #FFFF;
+    font-size: 90%;
   }
 
   .game-title {
@@ -73,5 +76,18 @@ export default {
 
   .popover {
     margin-left: 10px;
+  }
+
+  .player-name {
+    cursor: pointer;
+  }
+
+  .game-card-button {
+    margin: 5px;
+    width: 10em;
+  }
+
+  .btn-primary {
+    background-color: #0A6496 !important;
   }
 </style>

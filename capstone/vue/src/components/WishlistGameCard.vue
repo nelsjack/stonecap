@@ -1,12 +1,11 @@
 <template>
   <div class="wishlist-game-card">
-      <div class="game-card" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id">
+      <b-card class="game-card" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id">
       <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
-      <p class="game-plays">N/A</p>
       <p class="game-description">{{ game.description }}</p>
       <p class="game-price">${{ game.price }}</p>
-    </div>
+    </b-card>
   </div>
 </template>
 
@@ -21,5 +20,25 @@ export default {
     .wishlist-game-card {
        width: 75%;
        margin-top: 1em; 
+    }
+
+    .game-description {
+      font-size: 80%;
+      margin-left: 10px;
+    }
+
+    .game-price {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .game-thumbnail {
+      margin-left: 10px;
+      margin-right: 10px; 
+    }
+
+    .game-title {
+      margin-left: 10px;
+      margin-right: 10px; 
     }
 </style>
