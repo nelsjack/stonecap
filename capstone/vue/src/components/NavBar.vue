@@ -14,7 +14,7 @@
       <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled">
           <b-dropdown-item >profile</b-dropdown-item>
           <b-dropdown-item >settings</b-dropdown-item>
-          <b-dropdown-item to="/logout">logout</b-dropdown-item>
+          <b-dropdown-item to="/logout" v-if="$store.state.token != ''">logout</b-dropdown-item>
       </b-nav-item-dropdown>
   </b-navbar>
 </template>

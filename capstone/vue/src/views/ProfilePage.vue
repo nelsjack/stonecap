@@ -1,6 +1,7 @@
 <template>
   <div class="profile-page">
     <div class="game-collection">
+      <h4>{{ this.$route.params.username }}'s Profile</h4>
       <game-card :games="this.playedGames"> </game-card>
       <!-- <post-card> </post-card> -->
 
