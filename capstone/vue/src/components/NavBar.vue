@@ -2,7 +2,7 @@
   <b-navbar class="navbar justify-content-between sticky-top shadow p-3 mb-5">
       <b-nav-item-dropdown id="home-dropdown" class="list-unstyled">
           <b-dropdown-item to="/">Home</b-dropdown-item>
-          <b-dropdown-item >Feed</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="routeToAllPosts">Feed</b-dropdown-item>
           <b-dropdown-item v-on:click.prevent="routeToUserWishlist">Wishlist</b-dropdown-item>
           <b-dropdown-item >Friends</b-dropdown-item>
           <b-dropdown-item >Game history</b-dropdown-item>
@@ -26,6 +26,9 @@ export default {
   methods: {
     routeToUserWishlist() {
           this.$router.push({name:'Wishlist', params: {username: this.$store.state.user.username}})
+        }, 
+        routeToAllPosts(){
+          this.$router.push({name: 'AllPosts' })
         }
   }
 }

@@ -9,6 +9,7 @@ import ProfilePage from '../views/ProfilePage.vue'
 import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 import Post from '../views/Post.vue'
+import AllPosts from '../components/AllPosts.vue' 
 
 Vue.use(Router)
 
@@ -93,6 +94,14 @@ const router = new Router({
         requiresAuth: false
       }
     },
+    {
+      path: "/post/all-posts", 
+      name: "AllPosts", 
+      component: AllPosts, 
+      meta: {
+        requiresAuth: false
+      }
+    }
   ]
 })
 

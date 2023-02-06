@@ -1,5 +1,5 @@
 <template>
-  <div class="form-card">
+  <b-card class="form-card shadow">
     <h3 class="new-post">New Post</h3>
     <b-form
       class="form-buttons"
@@ -89,7 +89,7 @@
       <b-button type="submit" variant="primary">Submit</b-button>
       <b-button type="reset" variant="danger">Reset</b-button>
     </b-form>
-  </div>
+  </b-card>
 </template>
 
 <script>

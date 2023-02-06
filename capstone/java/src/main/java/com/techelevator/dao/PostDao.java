@@ -11,4 +11,5 @@ public interface PostDao {
     Post createNewPost(Post createPost);
     void deletePost(int postId);
     void deleteImage(String imageUrl);
+    public List<Post> getAllPosts();
 }
