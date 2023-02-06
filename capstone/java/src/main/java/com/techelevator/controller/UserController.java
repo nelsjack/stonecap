@@ -84,5 +84,11 @@ public class UserController {
         }
         return users;
     }
+    @RequestMapping(path = "/user/search/{username}", method = RequestMethod.GET)
+    public User getUserById(@PathVariable String username) {
+        User user = userDao.findByUsername(username);
+
+        return user;
+    }
 
 }
