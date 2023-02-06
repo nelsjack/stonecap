@@ -18,7 +18,30 @@ export default {
 </script>
 
 <style>
+.post-image {
+    height: 5em;
+    width: 5em;
+    margin-left: 5px;
+  }
 
+  .post-card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 1px;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #FFFF;
+  }
+
+  .post-title {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .post-comments {
+    margin-right: 5px;
+  }
 
 
 </style>
