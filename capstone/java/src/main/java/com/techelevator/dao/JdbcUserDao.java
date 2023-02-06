@@ -72,6 +72,20 @@ public class JdbcUserDao implements UserDao {
         }
         throw new UsernameNotFoundException("User " + username + " was not found.");
     }
+//    @TODO fuzzy search username
+    @Override
+    public List<User> findByUsernameContains(String username) {
+        if (username == null) throw new IllegalArgumentException("Username cannot be null");
+        List<User> matchingUsers = new ArrayList<>();
+        for (User user : this.findAll()) {
+            if (user.getUsername().toLowerCase().contains(username.toLowerCase())) {
+                matchingUsers.add(user);
+            }
+        }
+        if (matchingUsers.size()==0){
+        throw new UsernameNotFoundException("User " + username + " was not found.");}
+        return matchingUsers;
+    }
 
     @Override
     public boolean create(String username, String password, String role) {

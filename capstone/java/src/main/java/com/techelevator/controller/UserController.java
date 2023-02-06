@@ -85,10 +85,16 @@ public class UserController {
         return users;
     }
     @RequestMapping(path = "/user/search/{username}", method = RequestMethod.GET)
-    public User getUserById(@PathVariable String username) {
+    public User getUserByUsername(@PathVariable String username) {
         User user = userDao.findByUsername(username);
 
         return user;
+    }
+    @RequestMapping(path = "/user/search/contains/{username}", method = RequestMethod.GET)
+    public List<User> getUserByUsernameFuzzy(@PathVariable String username) {
+        List<User> userList = userDao.findByUsernameContains(username);
+
+        return userList;
     }
 
 }
