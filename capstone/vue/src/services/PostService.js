@@ -15,7 +15,7 @@ export default {
     // }, 
 
     getAllByUserId (userId) {
-        return http.get(`http://localhost:9000/post/${userId}`); 
+        return http.get(`http://localhost:9000/post/user/${userId}`); 
     }, 
 
     createNewPost(post) {

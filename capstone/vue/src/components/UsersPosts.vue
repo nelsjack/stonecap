@@ -16,18 +16,14 @@ export default {
       posts: [],
     };
   },
-
-  methods: {
-      viewUsersPosts(postId){
-          this.$router.push(`/post/${postId}`)
-      }, 
       created(){
-      postService.getAllByUserId().then((response) => {
+      postService.getAllByUserId(this.$store.state.user.id).then((response) => {
+          console.log(response.data); 
           this.posts = response.data; 
       })
   }, 
       
-  },
+  
 };
 </script>
 
