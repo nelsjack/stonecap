@@ -61,12 +61,8 @@ public class JdbcBoardGameDao implements BoardGameDao {
 
     //todo: confirm sql syntax
     public Integer saveGameForUser(BoardGame saveGame) {
-        System.out.println(saveGame.getUserId());
-        System.out.println(saveGame.getBoardGameId());
-        System.out.println(saveGame.getSaveType());
         String sql = "INSERT INTO boardgames (user_id, board_game_id, save_type) VALUES (?, ?, ?) RETURNING user_game_id";
         Integer userGameId = jdbcTemplate.queryForObject(sql, Integer.class, saveGame.getUserId(), saveGame.getBoardGameId(), saveGame.getSaveType());
-        System.out.println(userGameId);
         return userGameId;
     }
 
