@@ -6,7 +6,7 @@
       <p class="game-description">{{ game.description }}</p>
       <b-button class="game-card-button" variant="primary">Add to Owned</b-button>
       <b-button class="game-card-button" variant="primary">Add to Played</b-button>
-      <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist">Add to Wishlist</b-button>
+      <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist(game.id)">Add to Wishlist</b-button>
 
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
