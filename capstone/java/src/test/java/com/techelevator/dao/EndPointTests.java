@@ -81,6 +81,7 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
     assertThat(actualGame2).isEqualTo(expectedBoardgame2);
 
 }
+
 //    //    TODO  create a post
 //    @Test
 //    void givenAUserEnteredValidData_WhenTheUserSubmitsAPost_ThenThePostIsReturnedAndStatusIsCreated() {
@@ -97,6 +98,8 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 //        Post actualPost = response1.getBody();
 //        System.out.println(actualPost.toString());
 //        Integer actualUser1 = actualFriendship.getUserIdOne();
+
+
 //        Integer actualUser2 = actualFriendship.getUserIdTwo();
 //
 //
@@ -104,7 +107,7 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
 //
 //        // Then
 //        assertThat(response1.getStatusCode()).isEqualTo(HttpStatus.CREATED);
-//        assertThat(actualUser1).isEqualTo(inputUserId1);
+//        assertThat(actualUser1).isEqualTo(testPost.getUserId());
 //        assertThat(actualUser2).isEqualTo(inputUserId2);
 
 
@@ -140,14 +143,14 @@ void givenAUsernameHasPlayedGamesInTheDatabase_WhenTheUsernameIsSentToTheEndpoin
    @Test
    void givenAUserHasFriendsInTheDatabase_WhenTheUsernameIsSentToTheEndpoint_ThenTheCorrectListOfFriendsIsReturned() {
        // Given
-       String inputuserId1 = "1";
+       String inputUserId1 = "1";
        String inputUserId2 = "2";
        Integer expectedUserId1 = 2;
        Integer expectedUserId2 = 1;
 
        // When
        System.out.println("before query");
-       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputuserId1+"/friends", ArrayList.class);
+       ResponseEntity<ArrayList> response1 = restTemplate.getForEntity(API_BASE_URL + "/user/"+inputUserId1+"/friends", ArrayList.class);
        ArrayList listOfFriends1 = response1.getBody();
        Integer actualUser1 = (Integer) (listOfFriends1.get(0));
 
