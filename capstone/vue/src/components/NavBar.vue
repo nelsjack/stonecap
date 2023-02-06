@@ -51,4 +51,10 @@ export default {
    text-align: end;
    margin-right: 1em;
  }
+
+ .nav-title {
+   color: white !important;
+   font-size: 2em !important;
+   font-weight: bold;
+ }
 </style>

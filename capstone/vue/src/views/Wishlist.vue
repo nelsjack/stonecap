@@ -1,6 +1,6 @@
 <template>
   <div class="wishlist">
-    <h3>Wishlist</h3>
+    <h3>Your Wishlist</h3>
     <wishlist-game-card :games="this.wishlistGames" />
   </div>
 </template>
