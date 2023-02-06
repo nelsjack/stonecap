@@ -1,27 +1,33 @@
 <template>
-  <b-navbar class="navbar justify-content-between sticky-top">
+  <b-navbar class="navbar justify-content-between sticky-top shadow p-3 mb-5">
       <b-nav-item-dropdown id="home-dropdown" class="list-unstyled">
-          <b-dropdown-item to="/">home</b-dropdown-item>
-          <b-dropdown-item >feed</b-dropdown-item>
-          <b-dropdown-item >wishlist</b-dropdown-item>
-          <b-dropdown-item >friends</b-dropdown-item>
-          <b-dropdown-item >game history</b-dropdown-item>
+          <b-dropdown-item to="/">Home</b-dropdown-item>
+          <b-dropdown-item >Feed</b-dropdown-item>
+          <b-dropdown-item v-on:click.prevent="routeToUserWishlist">Wishlist</b-dropdown-item>
+          <b-dropdown-item >Friends</b-dropdown-item>
+          <b-dropdown-item >Game history</b-dropdown-item>
       </b-nav-item-dropdown>
-      <b-navbar-brand to="/">
-        stone cap
+      <b-navbar-brand class="nav-title" to="/">
+        Stone Cap
       </b-navbar-brand>
       <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
       <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled">
-          <b-dropdown-item >profile</b-dropdown-item>
-          <b-dropdown-item >settings</b-dropdown-item>
-          <b-dropdown-item to="/logout" v-if="$store.state.token != ''">logout</b-dropdown-item>
+          <b-dropdown-item >Profile</b-dropdown-item>
+          <b-dropdown-item >Settings</b-dropdown-item>
+          <b-dropdown-item to="/logout" v-if="$store.state.token != ''">Logout</b-dropdown-item>
+          <b-dropdown-item to="/logout" v-if="$store.state.token == ''">Login</b-dropdown-item>
       </b-nav-item-dropdown>
   </b-navbar>
 </template>
 
 <script>
 export default {
-name: 'nav-bar'
+  name: 'nav-bar',
+  methods: {
+    routeToUserWishlist() {
+          this.$router.push({name:'Wishlist', params: {username: this.$store.state.user.username}})
+        }
+  }
 }
 </script>
 
