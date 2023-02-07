@@ -1,13 +1,11 @@
 <template>
   <div>
-    <h1>test card</h1>
-    <!-- <b-card >
-      <img  :src="game.thumb_url" />
-<
-    </b-card> -->
-    <h1>{{userContent}}</h1>
-    <h1 :key= id.id v-for="id in users">{{id}} testA</h1>
-    <h1 :key= content.id v-for="content in userContent"> testB</h1>
+    
+    <b-card >
+      <h1>{{user.id}}</h1>
+
+    </b-card>
+<!-- <h1>{{user.id}}</h1> -->
   </div>
 </template>
 
@@ -16,7 +14,7 @@ import userService from '../services/UserService.js';
 
 export default {
     name: 'user-card',
-    props: ['users'],
+    props: ['user'],
     data() {
       return {
         userId: -1,

@@ -52,6 +52,14 @@ public class UserController {
     return listOfFriends;
 
     }
+    @RequestMapping(path = "/userList/", method = RequestMethod.POST)
+    public List<User> postUsersByIds(@RequestBody List<Integer> list) {
+        List<User> listOfFriends = new ArrayList<>();
+        for (int id : list){
+            listOfFriends.add(userDao.getUserById(id));}
+        return listOfFriends;
+
+    }
 
     @RequestMapping(path = "/user/{userId}/friends", method = RequestMethod.GET)
     public List<Integer> findAllFriendsById(@PathVariable int userId){

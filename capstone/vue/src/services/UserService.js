@@ -14,8 +14,8 @@ export default {
     },
     getUser(userId){
         return http.get(`http://localhost:9000/user/${userId}`);
-    }, getUsers(userIds){
-        return http.get(`http://localhost:9000/userlist`,userIds);
+    }, getUsers(userList){
+        return http.post(`http://localhost:9000/userList/`,userList);
     },
 
 }
