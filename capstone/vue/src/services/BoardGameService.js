@@ -22,6 +22,10 @@ export default {
         return http.get(`http://localhost:9000/boardgame/${username}/wishlist`);
     },
 
+    getOwnedBoardGamesByUsername(username) {
+        return http.get(`http://localhost:9000/boardgame/${username}/owned`);
+    },
+
     saveGameForUser(boardgame) {
         return http.post('http://localhost:9000/boardgame/save-game', boardgame);
     }

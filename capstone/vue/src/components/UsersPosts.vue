@@ -1,6 +1,6 @@
 <template>
   <div class="users-posts-container">
-    <h2 class="title">Feed</h2>
+    <h2 class="title">Your Posts</h2>
     <post-card :posts="this.posts" />
   </div>
 </template>
