@@ -4,9 +4,7 @@
       <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
-      <b-button class="game-card-button" variant="primary">Add to Owned</b-button>
-      <b-button class="game-card-button" variant="primary">Add to Played</b-button>
-      <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist(game.id)">Add to Wishlist</b-button>
+      <game-card-buttons :gameId="game.id"/>
 
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
@@ -20,11 +18,13 @@
 
 <script>
 import userService from '../services/UserService';
-import boardGameService from '../services/BoardGameService'
+import boardGameService from '../services/BoardGameService';
+import GameCardButtons from './GameCardButtons.vue';
 
 export default {
     name: 'game-card',
     props: ['games'],
+    components: { GameCardButtons },
     data() {
       return {
         hover: false,
@@ -34,7 +34,11 @@ export default {
       methods: {
         displayCurrentUsers(boardGameId) {
           userService.getUsersByBoardGameId(boardGameId).then(response => {
-            this.currentPlayers = response.data;
+            let responseArray = response.data;
+            const result = responseArray.filter( function( item, index, inputArray ) {
+              return inputArray.indexOf(item) == index;
+          });
+            this.currentPlayers = result;
           })
         },
         routeToUserProfile(user) {
@@ -47,12 +51,22 @@ export default {
             board_game_id: boardGameId, 
             save_type: "wishlist"
           }
+          boardGameService.saveGameForUser(boardGame);
+        },
+        checkIfGameIsOnWishlist(boardGameId) {
+          boardGameService.getWishlistBoardGamesByUsername(this.$store.state.user.username)
+          .then(response => {
+            response.data.forEach((element) => {
+              if(element.board_game_id == boardGameId) {
+                return true;
+              }
+            })
+          })
+        },
+        checkIfGameIsOwned() {
 
-          boardGameService.saveGameForUser(boardGame)
-
-
-
-
+        },
+        checkIfGameIsPlayed() {
 
         }
       }
