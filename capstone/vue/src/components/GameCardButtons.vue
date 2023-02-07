@@ -1,8 +1,17 @@
 <template>
     <div class="game-card-button-container" >
-        <b-button class="game-card-button" variant="primary">Add to Owned</b-button>
-        <b-button class="game-card-button" variant="primary">Add to Played</b-button>
-        <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist(gameId)" v-bind:disabled="wishlistDisabled" v-if="!isOnWishlist">Add to Wishlist</b-button>
+        <b-button class="game-card-button" variant="primary">
+          <b-icon icon="archive"></b-icon>
+          Add to Owned
+        </b-button>
+        <b-button class="game-card-button" variant="primary">
+          <b-icon icon="bookmark-check"></b-icon>
+          Add to Played
+        </b-button>
+        <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist(gameId)" v-bind:disabled="wishlistDisabled" v-if="!isOnWishlist">
+          <b-icon icon="cart-plus"></b-icon>
+          Add to Wishlist
+        </b-button>
     </div>
 </template>
 

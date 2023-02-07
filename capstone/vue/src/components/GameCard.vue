@@ -88,12 +88,12 @@ export default {
   .game-card {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items: flex-start;
     border: solid 1px;
     border-radius: 10px;
     margin-top: 10px;
-    background-color: #FFFF;
-    font-size: 90%;
+    background-color: rgb(187, 179, 179);
+    font-size: 95%;
   }
 
   .game-title {
