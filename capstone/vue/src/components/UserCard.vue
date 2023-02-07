@@ -1,10 +1,13 @@
 <template>
   <div>
-    <b-card  :id='`${user.id}`' v-for="user in friends" v-bind:key="user.id" >
+    <h1>test card</h1>
+    <!-- <b-card >
       <img  :src="game.thumb_url" />
-
-    </b-card>
-    
+<
+    </b-card> -->
+    <h1>{{userContent}}</h1>
+    <h1 :key= id.id v-for="id in users">{{id}} testA</h1>
+    <h1 :key= content.id v-for="content in userContent"> testB</h1>
   </div>
 </template>
 
@@ -13,20 +16,20 @@ import userService from '../services/UserService.js';
 
 export default {
     name: 'user-card',
-    props: ['user'],
+    props: ['users'],
     data() {
       return {
-        friends:[],
+        userId: -1,
+   
       }
-    }, created:{
-        getFriends(){
-            userService.getAllFriends().then(response => {
-                this.friends =response.data;
-            })
-        }
+    }
+    , computed: {
+userContent(){ 
+  return userService.getUsers(this.users)
     }
 
     }
+}
     
 ;
 </script>

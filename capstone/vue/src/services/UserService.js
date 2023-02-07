@@ -9,9 +9,14 @@ export default {
     getUsersByBoardGameId(boardGameId) {
         return http.get(`http://localhost:9000/user/boardgame/${boardGameId}`);
     },
-    getAllFriends(){
-        return http.get(`http://localhost:9000/user/MyFriends`);
-    }
+    getAllFriends(userId){
+        return http.get(`http://localhost:9000/user/${userId}/friends`);
+    },
+    getUser(userId){
+        return http.get(`http://localhost:9000/user/${userId}`);
+    }, getUsers(userIds){
+        return http.get(`http://localhost:9000/userlist`,userIds);
+    },
 
 }
 
