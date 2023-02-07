@@ -11,6 +11,7 @@ public interface BoardGameDao {
     BoardGame getBoardGame (String boardGameId);
     List<BoardGame> wishlistBoardGameByUserId(int userId, String saveType);
     List<BoardGame> playedBoardGamesByUserId(int userId, String saveType);
+    List<BoardGame> ownedBoardGamesByUserId(int userId, String saveType);
     Integer saveGameForUser(BoardGame saveGame);
     void removeBoardGame(int userId, String boardGameId);
 }

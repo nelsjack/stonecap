@@ -74,7 +74,7 @@ export default {
   width: 240px;
   text-align: end;
   margin-right: 16px;
-  font-size: 1.5em;
+  font-size: 1.3em;
   color: white
 }
 
