@@ -24,6 +24,10 @@ export default {
 
     createNewPost(post) {
         return http.post(`http://localhost:9000/create-post`, post); 
+    }, 
+
+    findUsernameByPost(userId) {
+        return http.get(`http://localhost:9000/post/${userId}`); 
     }
 
 }

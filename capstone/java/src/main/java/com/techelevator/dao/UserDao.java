@@ -18,4 +18,6 @@ public interface UserDao {
 
     List<User> usersByBoardGame (String boardGameId);
 
+    String findUsernameInPosts (int userId);
+
 }

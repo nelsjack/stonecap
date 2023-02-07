@@ -96,6 +96,16 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
+    public String findUsernameInPosts (int userId){
+        String username = null;
+        String sql = "SELECT username FROM users WHERE user_id IN (SELECT user_id FROM posts WHERE user_id = ?)";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, userId);
+        if(result.next()){
+            username = result.getString("username");
+        }
+        return username;
+    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getInt("user_id"));

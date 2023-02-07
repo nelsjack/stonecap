@@ -1,5 +1,6 @@
 <template>
   <div class="feed-page">
+    
     <all-post class="all-posts" :posts="this.allPosts"></all-post>
   </div>
 </template>

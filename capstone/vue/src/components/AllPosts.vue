@@ -1,6 +1,7 @@
 <template>
   <div class="all-posts-container">
       <h1 class="title"> Feed </h1>
+        <b-button class="post-button" variant="primary" v-on:click="routeToCreatePost()">Add New Post</b-button>
       <post-card :posts="this.posts"/>
      
   </div>
@@ -21,6 +22,12 @@ export default {
         postService.getAllPosts().then(response =>{
             this.posts = response.data; 
         })
+    }, 
+    methods: {
+        routeToCreatePost(){
+            this.$router.push({name: 'Post'})
+            this.$router.go()
+        }
     }
 
 }

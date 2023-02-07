@@ -91,4 +91,9 @@ public class UserController {
         return user;
     }
 
+    @RequestMapping(path = "/post/{userId}", method = RequestMethod.GET)
+    public String findUsernameInPosts (@PathVariable int userId) {
+        return userDao.findUsernameInPosts(userId);
+    }
+
 }

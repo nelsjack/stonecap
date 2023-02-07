@@ -25,6 +25,7 @@ public class JdbcPostDao implements PostDao{
         return allPosts;
     }
 
+
    public Post getPost (int postId){
         Post post = null;
         String sql = "SELECT * FROM posts WHERE post_id = ?";
