@@ -25,7 +25,7 @@ export default {
       boardGameService.getWishlistBoardGamesByUsername(this.$route.params.username)
         .then((response) => {
           response.data.forEach((element) => {
-            boardGameService.getBoardGamesById(element.boardGameId)
+            boardGameService.getBoardGamesById(element.board_game_id)
               .then((data) => {
                 this.wishlistGames.push(data.data.games[0]);
               });

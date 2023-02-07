@@ -1,13 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div class="nav">
-            <router-link v-bind:to="{ name: 'home' }">
-          <h3>Home</h3>
-      </router-link>
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">
-        <h3>Logout</h3>
-      </router-link>
-    </div> -->
     <nav-bar></nav-bar>
     <router-view />
   </div>

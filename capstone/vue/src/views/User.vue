@@ -30,9 +30,8 @@ export default {
           const playedGamesArray = [];
           response.data.forEach((element) => {
             boardGameService
-              .getBoardGamesById(element.boardGameId)
+              .getBoardGamesById(element.board_game_id)
               .then((data) => {
-                console.log(data.data);
                 playedGamesArray.push(data.data.games[0]);
               });
           });
