@@ -4,8 +4,10 @@
       <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
       <p class="game-description">{{ game.description }}</p>
-      <b-button class="game-card-button" variant="primary">Add to Collection</b-button>
-      <b-button class="game-card-button" variant="primary">Add to Wishlist</b-button>
+      <b-button class="game-card-button" variant="primary">Add to Owned</b-button>
+      <b-button class="game-card-button" variant="primary">Add to Played</b-button>
+      <b-button class="game-card-button" variant="primary" v-on:click="addGameToWishlist(game.id)">Add to Wishlist</b-button>
+
       <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
         <div class="player-name" v-for="player in currentPlayers" v-bind:key="player" v-on:click="routeToUserProfile(player)">
@@ -18,6 +20,7 @@
 
 <script>
 import userService from '../services/UserService';
+import boardGameService from '../services/BoardGameService'
 
 export default {
     name: 'game-card',
@@ -37,6 +40,20 @@ export default {
         routeToUserProfile(user) {
           this.$router.push({name:'Profile', params: {username: user}})
           this.$router.go()
+        },
+        addGameToWishlist(boardGameId) {
+          const boardGame= {
+            user_id: this.$store.state.user.id,
+            board_game_id: boardGameId, 
+            save_type: "wishlist"
+          }
+
+          boardGameService.saveGameForUser(boardGame)
+
+
+
+
+
         }
       }
 };

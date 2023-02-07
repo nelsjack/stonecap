@@ -14,6 +14,17 @@ public class JdbcPostDao implements PostDao{
 
     public JdbcPostDao (JdbcTemplate jdbcTemplate){ this.jdbcTemplate = jdbcTemplate; }
 
+    public List<Post> getAllPosts() {
+        List<Post> allPosts = new ArrayList<>();
+        String sql = "SELECT * FROM posts";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while(results.next()){
+            Post post = mapRowToPost(results);
+            allPosts.add(post);
+        }
+        return allPosts;
+    }
+
    public Post getPost (int postId){
         Post post = null;
         String sql = "SELECT * FROM posts WHERE post_id = ?";

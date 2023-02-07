@@ -10,6 +10,7 @@ import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 import Post from '../views/Post.vue'
 import Friends from '../views/Friends.vue'
+import AllPosts from '../components/AllPosts.vue'
 
 Vue.use(Router)
 
@@ -90,6 +91,14 @@ const router = new Router({
       path: "/boardgame/:username/wishlist",
       name: "Wishlist",
       component: Wishlist,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/post/all-posts",
+      name: "AllPosts",
+      component: AllPosts,
       meta: {
         requiresAuth: false
       }

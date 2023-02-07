@@ -51,8 +51,9 @@ public class BoardGameController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "boardgame/save-game")
-    public BoardGame saveGameForUser(@RequestBody BoardGame saveGame, @PathVariable String username) {
+
+    @RequestMapping(path = "boardgame/save-game", method = RequestMethod.POST)
+    public Integer saveGameForUser(@RequestBody BoardGame saveGame) {
         return boardGameDao.saveGameForUser(saveGame);
     }
 

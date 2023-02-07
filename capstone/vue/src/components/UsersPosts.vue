@@ -1,6 +1,6 @@
 <template>
   <div class="users-posts-container">
-    <h3>Feed</h3>
+    <h2 class="title">Feed</h2>
     <post-card :posts="this.posts" />
   </div>
 </template>
@@ -16,18 +16,14 @@ export default {
       posts: [],
     };
   },
-
-  methods: {
-      viewUsersPosts(postId){
-          this.$router.push(`/post/${postId}`)
-      }, 
       created(){
-      postService.getAllByUserId().then((response) => {
+      postService.getAllByUserId(this.$store.state.user.id).then((response) => {
+          console.log(response.data); 
           this.posts = response.data; 
       })
   }, 
       
-  },
+  
 };
 </script>
 
@@ -41,7 +37,10 @@ export default {
  }
 
   .users-posts-container {
-    width: 50%;
+    width: 30%;
     margin-top: 1em;
+  }
+  .title {
+      justify-content: center;
   }
 </style>

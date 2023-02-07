@@ -27,6 +27,12 @@ public class PostController {
         this.friendDao = friendDao;
     }
 
+    @RequestMapping(path = "/post/all-posts", method = RequestMethod.GET)
+    public List<Post> getAllPosts(){
+        List<Post> allPosts = postDao.getAllPosts();
+        return allPosts;
+    }
+
     @RequestMapping(path = "/post/post/{postId}", method = RequestMethod.GET)
     public Post getPost (@PathVariable int postId){
         Post post = postDao.getPost(postId);
