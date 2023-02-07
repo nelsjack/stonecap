@@ -9,15 +9,32 @@
       <img class="post-image" :src="post.image" />
       <h4 class="post-title">{{ post.title }}</h4>
       <p class="post-comments">{{ post.comments }}</p>
-      <p class="posted-user">{{ post.userid }}</p>
+      {{ getUsername(post.user_id) }}
+      <div class="posted-user">
+        {{ username }}
+      </div>
     </b-card>
   </div>
 </template>
 
 <script>
+import postService from "../services/PostService";
+
 export default {
   name: "post-card",
   props: ["posts"],
+  data() {
+    return {
+      username: "",
+    };
+  },
+  methods: {
+    getUsername(userId) {
+      postService.findUsernameByPost(userId).then((response) => {
+        this.username = response.data;
+      });
+    },
+  },
 };
 </script>
 
