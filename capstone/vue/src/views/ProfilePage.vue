@@ -1,8 +1,16 @@
 <template>
   <div class="profile-page">
     <div class="game-collection">
-      <h4>{{ this.$route.params.username }}'s Profile</h4>
-      <game-card :games="this.playedGames"> </game-card>
+      <h3>
+        {{ this.$route.params.username }}'s Profile
+        <b-icon icon="person"></b-icon>
+      </h3>
+      <br/>
+      <h4>
+        Owned Games
+        <b-icon icon="archive"></b-icon>
+      </h4>
+      <game-card :games="this.ownedGames"> </game-card>
       <!-- <post-card> </post-card> -->
 
     </div>
@@ -21,26 +29,26 @@ export default {
   },
   data() {
     return {
-      playedGames: [],
+      ownedGames: [],
     };
   },
   created() {
-    this.getPlayedBoardGames();
+    this.getOwnedBoardGames();
   },
   methods: {
-    getPlayedBoardGames() {
+    getOwnedBoardGames() {
       boardGameService
-        .getPlayedBoardGames(this.$route.params.username)
+        .getOwnedBoardGamesByUsername(this.$route.params.username)
         .then((response) => {
-          const playedGamesArray = [];
+          const ownedGamesArray = [];
           response.data.forEach((element) => {
             boardGameService
               .getBoardGamesById(element.board_game_id)
               .then((data) => {
-                playedGamesArray.push(data.data.games[0]);
+                ownedGamesArray.push(data.data.games[0]);
               });
           });
-          this.playedGames = playedGamesArray;
+          this.ownedGames = ownedGamesArray;
         });
     },
   },

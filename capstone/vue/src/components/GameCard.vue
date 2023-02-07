@@ -3,10 +3,8 @@
     <b-card class="game-card shadow" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
       <img class="game-thumbnail"  :src="game.thumb_url" />
       <h3 class="game-title">{{ game.handle }}</h3>
-      <p class="game-description">{{ game.description }}</p>
+      <p class="game-description" v-html="game.description"></p>
       <game-card-buttons :gameId="game.id"/>
-
-      <!-- Possibly make this its own CurrentPlayers component, add router link to span that directs to user profile page -->
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">
         <div class="player-name" v-for="player in currentPlayers" v-bind:key="player" v-on:click="routeToUserProfile(player)">
           {{ player }}<br/> </div>
@@ -92,6 +90,7 @@ export default {
     border: solid 1px;
     border-radius: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
     background-color: rgb(187, 179, 179);
     font-size: 95%;
   }
@@ -102,6 +101,8 @@ export default {
   }
 
   .game-description {
+    margin-top: 20px;
+    margin-left: 5px;
     margin-right: 5px;
   }
 
