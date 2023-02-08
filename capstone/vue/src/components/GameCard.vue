@@ -2,7 +2,7 @@
   <div>
     <b-card class="game-card shadow" :id='`${game.id}`' v-for="game in games" v-bind:key="game.id" v-on:mouseover="displayCurrentUsers(game.id)">
       <img class="game-thumbnail"  :src="game.thumb_url" />
-      <h3 class="game-title">{{ game.handle }}</h3>
+      <h3 class="game-title">{{ game.name }}</h3>
       <p class="game-description" v-html="game.description"></p>
       <game-card-buttons :gameId="game.id"/>
       <b-popover class="popover" :target='`${game.id}`' triggers="hover" placement="right" title="Current Players">

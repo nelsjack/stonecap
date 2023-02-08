@@ -12,11 +12,17 @@
         >Wishlist</b-dropdown-item
       >
       <b-dropdown-item to="/friends">Friends</b-dropdown-item>
-      <b-dropdown-item>Game history</b-dropdown-item>
+      <b-dropdown-item v-on:click.prevent="routeToUserProfile"
+        >Game History</b-dropdown-item
+      >
     </b-nav-item-dropdown>
     <b-navbar-brand class="nav-title" to="/"> Stone Cap Games </b-navbar-brand>
     <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
-    <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled" :text="this.$store.state.user.username">
+    <b-nav-item-dropdown
+      id="profile-dropdown"
+      class="list-unstyled"
+      :text="this.$store.state.user.username"
+    >
       <b-dropdown-item v-on:click.prevent="routeToUserProfile"
         >Profile</b-dropdown-item
       >
@@ -51,6 +57,13 @@ export default {
         params: { username: this.$store.state.user.username },
       });
     },
+
+    routeToUserHistory() {
+      this.$router.push({
+        name: "history",
+        params: { username: this.$store.state.user.username },
+      });
+    },
   },
 };
 </script>
@@ -75,7 +88,7 @@ export default {
   text-align: end;
   margin-right: 16px;
   font-size: 1.3em;
-  color: white
+  color: white;
 }
 
 .nav-title {
@@ -84,5 +97,4 @@ export default {
   font-weight: bold;
   margin: 0px !important;
 }
-
 </style>
