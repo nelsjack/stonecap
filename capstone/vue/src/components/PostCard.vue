@@ -15,40 +15,33 @@
 
       
       <p class="post-comments">{{ post.comments }}</p>
-   {{ getUsername(post.user_id) }}
-      <div class="posted-user">
-         {{ username }}
-      </div>
+
+  <post-username :post="post"></post-username>
     </b-card>
   </div>
 </template>
 
 <script>
-import postService from "../services/PostService";
-
+// import postService from "../services/PostService";
+import PostUsername from "./PostUsername.vue"
 export default {
   name: "post-card",
   props: ["posts"],
+  components: {PostUsername}, 
   data() {
     return {
       username: "",
       // rating: 0
     };
   },
-  methods: {
-    getUsername(userId) {
-      postService.findUsernameByPost(userId).then((response) => {
-        console.log(response.data)
-        this.username = response.data;
-      });
-    },
+  
     // getStarReviews(rating){
     //   postService.rating(rating).then((response) => {
     //     this.rating = response.data
     //   })
 
     // }
-  },
+
 };
 </script>
 
