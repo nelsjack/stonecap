@@ -88,7 +88,7 @@ public class UserController {
         return users;
     }
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/user/{username}/add-friend")
+    @RequestMapping(path = "/user/add-friend")
     public Friend createFriendship(@RequestBody Friend newFriend){
         return friendDao.createFriendship(newFriend);
     }

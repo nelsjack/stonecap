@@ -8,10 +8,16 @@
     >
       <img class="post-image" :src="post.image" />
       <h4 class="post-title">{{ post.title }}</h4>
+      
+      <!-- <img src='../assets/star.png' class='star-rating'
+      v-bind:title="post.rating + 'rating'" v-for='rating in posts' v-bind:key='rating' /> -->
+<!-- v-for='rating in ratings' v-bind:key='rating' -->
+
+      
       <p class="post-comments">{{ post.comments }}</p>
-      {{ getUsername(post.user_id) }}
+   {{ getUsername(post.user_id) }}
       <div class="posted-user">
-        {{ username }}
+         {{ username }}
       </div>
     </b-card>
   </div>
@@ -26,14 +32,22 @@ export default {
   data() {
     return {
       username: "",
+      // rating: 0
     };
   },
   methods: {
     getUsername(userId) {
       postService.findUsernameByPost(userId).then((response) => {
+        console.log(response.data)
         this.username = response.data;
       });
     },
+    // getStarReviews(rating){
+    //   postService.rating(rating).then((response) => {
+    //     this.rating = response.data
+    //   })
+
+    // }
   },
 };
 </script>
@@ -67,5 +81,10 @@ export default {
 
 .post-comments {
   margin-right: 5px;
+}
+
+.star-rating{
+  justify-content: right;
+  width: 2em; 
 }
 </style>

@@ -36,8 +36,6 @@ export default {
    margin: 5em;
   justify-content: center;
 }
-.users-posts{
-  width: 75%
-}
+
 
 </style>
