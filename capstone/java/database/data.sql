@@ -1,8 +1,8 @@
 BEGIN TRANSACTION;
 
 --Add users
-INSERT INTO users (username,password_hash,role,image) VALUES ('mia','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/8138/avatar.svg');
-INSERT INTO users (username,password_hash,role,image)VALUES ('sue','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/106359/avatar.svg');
+INSERT INTO users (username,password_hash,role,image) VALUES ('user1','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/8138/avatar.svg');
+INSERT INTO users (username,password_hash,role,image)VALUES ('user2','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/106359/avatar.svg');
 INSERT INTO users (username,password_hash,role,image) VALUES ('kim','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/7225/avatar.svg');
 INSERT INTO users (username,password_hash,role,image) VALUES ('rob','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER','https://www.svgrepo.com/show/35097/avatar.svg');
 INSERT INTO users (username,password_hash,role,image) VALUES ('sally','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN','https://www.svgrepo.com/show/29895/avatar.svg');
