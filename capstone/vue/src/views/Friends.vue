@@ -2,18 +2,19 @@
   <div class="container">
     <h1 class=page-title>{{user_name}}'s Friends Page</h1>
     <user-card v-for="user in users" :key="user.id" :user="user"></user-card>
-
+<search-user></search-user>
    
 
   </div>
 </template>
 
 <script>
+import SearchUser from '../components/SearchUser.vue';
 import UserCard from "../components/UserCard.vue";
 
 import UserService from "../services/UserService.js";
 export default {
-  components: { UserCard },
+  components: { UserCard, SearchUser },
   data() {
     return {
       friends: [],
