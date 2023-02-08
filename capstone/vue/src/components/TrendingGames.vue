@@ -52,6 +52,6 @@ export default {
 
   .trending-games-container {
     width: 75%;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 </style>
