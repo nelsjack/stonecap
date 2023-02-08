@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     
     <b-card class="user-card shadow" @click="routeToUserProfile" >
       <img class="user-icon" :src="user.image" />
