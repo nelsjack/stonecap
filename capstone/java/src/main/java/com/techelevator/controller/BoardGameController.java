@@ -50,6 +50,13 @@ public class BoardGameController {
         return playedGames;
     }
 
+    @RequestMapping(path = "/boardgame/{username}/owned", method = RequestMethod.GET)
+    public List<BoardGame> ownedBoardGamesByUsername(@PathVariable String username) {
+        int userId = userDao.findIdByUsername(username);
+        List<BoardGame> playedGames = boardGameDao.playedBoardGamesByUserId(userId, "owned");
+        return playedGames;
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
 
     @RequestMapping(path = "boardgame/save-game", method = RequestMethod.POST)

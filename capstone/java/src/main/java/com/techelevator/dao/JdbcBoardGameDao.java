@@ -59,6 +59,19 @@ public class JdbcBoardGameDao implements BoardGameDao {
         return playedGames;
     }
 
+    @Override
+    public List<BoardGame> ownedBoardGamesByUserId(int userId, String saveType){
+        List<BoardGame> ownedGames = new ArrayList<>();
+        String sql = "SELECT user_game_id, user_id, board_game_id, save_type FROM boardgames WHERE user_id = ? AND save_type = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, saveType);
+
+        while(results.next()) {
+            BoardGame game = mapRowToBoardGame(results);
+            ownedGames.add(game);
+        }
+        return ownedGames;
+    }
+
     //todo: confirm sql syntax
     public Integer saveGameForUser(BoardGame saveGame) {
         String sql = "INSERT INTO boardgames (user_id, board_game_id, save_type) VALUES (?, ?, ?) RETURNING user_game_id";
