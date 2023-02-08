@@ -32,10 +32,11 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <b-button class="register-button" type="submit">
         Create Account
-      </button>
+      </b-button>
+      <br/>
+      <b-button class="register-button" :to="{ name: 'login' }">Have an account?</b-button>
     </form>
   </div>
 </template>
@@ -90,4 +91,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.form-register{
+  width: 75%;
+
+}
+#register{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register-button{
+  background-color: #0a6496 !important;
+  margin-top: 5px;
+}
+
+</style>
