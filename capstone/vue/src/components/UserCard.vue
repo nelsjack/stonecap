@@ -61,9 +61,7 @@ export default {
   margin-right: 10px;
 }
 
-.game-description {
-  margin-right: 5px;
-}
+
 
 .btn-primary {
   background-color: #0a6496 !important;

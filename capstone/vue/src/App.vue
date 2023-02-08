@@ -32,4 +32,13 @@ components: {
     height: 3em;
     background-color: #0A6496;
   }
+  .page-title {
+  display: inline-flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}  
+.container {
+    width: 75%;
+    margin-top: 10px;
+  }
 </style>
