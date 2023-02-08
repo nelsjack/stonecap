@@ -2,7 +2,7 @@
   <div class="trending-games-container">
       <h1>
         Trending Games
-        <b-icon icon="chevron-double-up" scale="0.9"></b-icon>
+        <b-icon icon="bar-chart" scale="0.9"></b-icon>
       </h1> 
       <game-card :games="this.games"/>
   </div>

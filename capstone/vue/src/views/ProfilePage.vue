@@ -1,7 +1,7 @@
 <template>
   <div class="profile-page">
     <div class="game-collection">
-      <!-- <b-avatar class="profile-picture" :src="this.$store.state.user.image" size="5em"/> -->
+      <b-avatar class="profile-picture" :src="profilePicture" size="5em"/>
       <h3>{{ this.$route.params.username }}'s Profile</h3>
       <b-button
         class="add-friend-button"
@@ -46,6 +46,7 @@ export default {
   created() {
     this.getOwnedBoardGames();
     this.checkIfUserIsFriend();
+    this.getUserProfilePicture();
   },
   methods: {
     getOwnedBoardGames() {
@@ -63,7 +64,12 @@ export default {
           this.ownedGames = ownedGamesArray;
         });
     },
-    getUserProfilePicture() {},
+    getUserProfilePicture() {
+      userService.getUserIdByUsername(this.$route.params.username)
+      .then((response) => {
+        this.profilePicture = response.data.image;
+      })
+    },
     checkIfUserIsFriend() {
       userService.getAllFriends(this.$store.state.user.id).then((response) => {
         this.friends = response.data;
