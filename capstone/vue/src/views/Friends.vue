@@ -32,9 +32,7 @@ export default {
           this.users = response.data;
         });
       });
-      UserService.getUsers([1]).then((response) => {
-        this.users = response.data;
-      });
+  
     },
   },
 };

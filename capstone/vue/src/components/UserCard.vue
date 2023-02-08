@@ -3,8 +3,7 @@
     
     <b-card class="user-card shadow">
       <h1 class="user-title">{{user.username}}</h1>
-      <h1>{{user}}</h1>
-      <img :src="user.image"/>
+      <img class="user-icon" :src="user.image"/>
     </b-card>
 <!-- <h1>{{user.id}}</h1> -->
   </div>
