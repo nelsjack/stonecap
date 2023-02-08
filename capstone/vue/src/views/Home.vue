@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h4 class="home-heading display-5">Discover newly released tabletop games <br>Explore other user's collections<br>Track your own!</h4>
+    <h4 class="home-heading display-5">Discover newly released tabletop games <br>Explore other users' collections<br>Track your own!</h4>
     <trending-games></trending-games>
   </div>
 </template>
