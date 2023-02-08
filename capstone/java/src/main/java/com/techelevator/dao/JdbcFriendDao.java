@@ -42,6 +42,8 @@ public class JdbcFriendDao implements FriendDao{
     }
 
     public Friend createFriendship(Friend newFriend){
+        System.out.println(newFriend.getUserIdOne());
+        System.out.println((newFriend.getUserIdTwo()));
         Friend friendship = null;
         String sql = "INSERT INTO friends (user_id_one, user_id_two) VALUES (?, ?) RETURNING friend_id";
         Integer newFriendshipId = jdbcTemplate.queryForObject(sql, int.class, newFriend.getUserIdOne(), newFriend.getUserIdTwo());

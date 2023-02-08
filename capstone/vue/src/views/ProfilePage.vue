@@ -2,25 +2,30 @@
   <div class="profile-page">
     <div class="game-collection">
       <!-- <b-avatar class="profile-picture" :src="this.$store.state.user.image" size="5em"/> -->
-      <h3>
-        {{ this.$route.params.username }}'s Profile
-        <b-icon icon="person"></b-icon>
-      </h3>
-      <b-button class="add-friend-button" v-if="this.$store.state.user.username != this.$route.params.username">Add Friend</b-button>
-      <br/>
+      <h3>{{ this.$route.params.username }}'s Profile</h3>
+      <b-button
+        class="add-friend-button"
+        v-bind:disabled="addFriendButtonDisabled"
+        v-if="
+          !isFriend &&
+          this.$store.state.user.username != this.$route.params.username"
+        v-on:click="addFriend"
+        ><b-icon icon="plus"/><b-icon icon="person"/> Add
+        Friend</b-button>
+      <br />
       <h4>
         Owned Games
         <b-icon icon="archive"></b-icon>
       </h4>
       <game-card :games="this.ownedGames"> </game-card>
       <!-- <post-card> </post-card> -->
-
     </div>
   </div>
 </template>
 
 <script>
 import boardGameService from "../services/BoardGameService";
+import userService from "../services/UserService";
 //import PostCard from "../components/PostCard.vue";
 import GameCard from "../components/GameCard.vue";
 export default {
@@ -32,11 +37,15 @@ export default {
   data() {
     return {
       ownedGames: [],
-      profilePicture: ""
+      profilePicture: "",
+      friends: [],
+      isFriend: false,
+      addFriendButtonDisabled: false
     };
   },
   created() {
     this.getOwnedBoardGames();
+    this.checkIfUserIsFriend();
   },
   methods: {
     getOwnedBoardGames() {
@@ -54,11 +63,28 @@ export default {
           this.ownedGames = ownedGamesArray;
         });
     },
-    getUserProfilePicture() {
-
-    },
+    getUserProfilePicture() {},
     checkIfUserIsFriend() {
-      
+      userService.getAllFriends(this.$store.state.user.id).then((response) => {
+        this.friends = response.data;
+        userService.getUsers(this.friends).then((response) => {
+          this.friends = response.data;
+          this.friends.forEach((element) => {
+            if (element.username == this.$route.params.username) {
+              this.isFriend = true;
+            }
+          });
+        });
+      });
+    },
+    addFriend() {
+      console.log(this.$store.state.user.id)
+      const friendship = {
+        user_id_one: this.$store.state.user.id,
+        user_id_two: 3
+      }
+      userService.createFriendship(friendship);
+      this.addFriendButtonDisabled = true
     }
   },
 };
@@ -79,5 +105,7 @@ export default {
 
 .add-friend-button {
   background-color: #0a6496 !important;
+  padding: 5px !important;
+  margin-bottom: 20px;
 }
 </style>
