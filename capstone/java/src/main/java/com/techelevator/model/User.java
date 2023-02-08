@@ -7,7 +7,7 @@ import java.util.Objects;
 import java.util.Set;
 
 public class User {
-
+private String image;
    private int id;
    private String username;
    @JsonIgnore
@@ -24,6 +24,14 @@ public class User {
       this.password = password;
       if(authorities != null) this.setAuthorities(authorities);
       this.activated = true;
+   }
+
+   public String getImage() {
+      return image;
+   }
+
+   public void setImage(String image) {
+      this.image = image;
    }
 
    public int getId() {
