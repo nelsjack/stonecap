@@ -4,12 +4,9 @@ import com.techelevator.dao.BoardGameDao;
 import com.techelevator.dao.FriendDao;
 import com.techelevator.dao.PostDao;
 import com.techelevator.dao.UserDao;
-import com.techelevator.model.BoardGame;
 import com.techelevator.model.Friend;
 import com.techelevator.model.User;
 import org.springframework.http.HttpStatus;
-import org.springframework.lang.UsesSunHttpServer;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -47,6 +44,22 @@ public class UserController {
         User user = userDao.getUserById(userId);
         return user;
     }
+    @RequestMapping(path = "/userList/", method = RequestMethod.GET)
+    public List<User> getUsersByIds(@RequestBody List<Integer> list) {
+        List<User> listOfFriends = new ArrayList<>();
+    for (int id : list){
+        listOfFriends.add(userDao.getUserById(id));}
+    return listOfFriends;
+
+    }
+    @RequestMapping(path = "/userList/", method = RequestMethod.POST)
+    public List<User> postUsersByIds(@RequestBody List<Integer> list) {
+        List<User> listOfFriends = new ArrayList<>();
+        for (int id : list){
+            listOfFriends.add(userDao.getUserById(id));}
+        return listOfFriends;
+
+    }
 
     @RequestMapping(path = "/user/{userId}/friends", method = RequestMethod.GET)
     public List<Integer> findAllFriendsById(@PathVariable int userId){
@@ -58,6 +71,22 @@ public class UserController {
         return friendsUserIds;
     }
 
+    @RequestMapping(path = "/user/MyFriends", method = RequestMethod.GET)
+    public List<User> findAllFriendsById(Principal principle){
+        String username = principle.getName();
+        System.out.println("principle " + principle);
+        int userId= userDao.findByUsername(username).getId();
+        List<Integer> friendsUserIds = new ArrayList<>();
+        List<Friend> friends = friendDao.findAllFriendsById(userId);
+        List<User> users = new ArrayList<>();
+        for (Friend friend : friends) {
+            friendsUserIds.add(friend.getUserIdTwo());
+        }
+        for (int Id :friendsUserIds){
+            users.add(userDao.getUserById(Id));
+        }
+        return users;
+    }
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/user/{username}/add-friend")
     public Friend createFriendship(@RequestBody Friend newFriend){
@@ -85,11 +114,18 @@ public class UserController {
         return users;
     }
     @RequestMapping(path = "/user/search/{username}", method = RequestMethod.GET)
-    public User getUserById(@PathVariable String username) {
+    public User getUserByUsername(@PathVariable String username) {
         User user = userDao.findByUsername(username);
 
         return user;
     }
+    @RequestMapping(path = "/user/search/contains/{username}", method = RequestMethod.GET)
+    public List<User> getUserByUsernameFuzzy(@PathVariable String username) {
+        List<User> userList = userDao.findByUsernameContains(username);
+
+        return userList;
+    }
+
 
     @RequestMapping(path = "/post/{userId}", method = RequestMethod.GET)
     public String findUsernameInPosts (@PathVariable int userId) {

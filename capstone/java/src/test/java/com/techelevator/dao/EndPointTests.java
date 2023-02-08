@@ -1,7 +1,13 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Friend;
+import com.techelevator.model.LoginDto;
+import com.techelevator.model.LoginResponseDto;
 import com.techelevator.model.Post;
+import org.apache.juli.logging.Log;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,10 +16,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 //TODO fix raw use of parameterized classes
@@ -169,10 +172,24 @@ HttpHeaders headers = getHeaders();
 
 
    }
+   @Test
+   void headertest(){
+       System.out.println(getHeaders());
+   }
 
     public HttpHeaders getHeaders() {
-        HttpHeaders header =new HttpHeaders();
-        header.setBearerAuth("eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMSIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NzU3ODM2Mzd9.pleoMu2aJmmHb7eCYQ581B0zrAKDIA3cVlExp3hVqWAt-ykZnuvAR3t0WCBDcGm2jz-dVCUY9c_RjThFmP2EWA");
-        return header;
+        LoginDto loginDto = new LoginDto();
+        loginDto.setUsername("user1");
+        loginDto.setPassword("password");
+        HttpEntity<LoginDto> entity = new HttpEntity<>(loginDto);
+        ResponseEntity<HashMap> response = restTemplate.postForEntity(API_BASE_URL + "/login",entity, HashMap.class);
+        System.out.println("LoginResponse: "+ response.getBody());
+        String token = response.getBody().get("token").toString();
+        System.out.println(token);
+
+        HttpHeaders finalHeader =new HttpHeaders();
+        finalHeader.setBearerAuth(token);
+        return finalHeader;
+
     }
 }

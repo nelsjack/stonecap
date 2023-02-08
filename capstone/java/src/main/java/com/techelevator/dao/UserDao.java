@@ -14,6 +14,8 @@ public interface UserDao {
 
     int findIdByUsername(String username);
 
+    List<User> findByUsernameContains(String username);
+
     boolean create(String username, String password, String role);
 
     List<User> usersByBoardGame (String boardGameId);

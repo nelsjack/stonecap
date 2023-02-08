@@ -17,4 +17,5 @@ private JdbcFriendDao sut;
     void givenAPostIdWhenGetFriendThenReturnsPost() {
         sut.getFriend(1);
     }
+
 }
