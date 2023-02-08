@@ -1,10 +1,12 @@
 <template>
   <div class="profile-page">
     <div class="game-collection">
+      <!-- <b-avatar class="profile-picture" :src="this.$store.state.user.image" size="5em"/> -->
       <h3>
         {{ this.$route.params.username }}'s Profile
         <b-icon icon="person"></b-icon>
       </h3>
+      <b-button class="add-friend-button" v-if="this.$store.state.user.username != this.$route.params.username">Add Friend</b-button>
       <br/>
       <h4>
         Owned Games
@@ -30,6 +32,7 @@ export default {
   data() {
     return {
       ownedGames: [],
+      profilePicture: ""
     };
   },
   created() {
@@ -51,6 +54,12 @@ export default {
           this.ownedGames = ownedGamesArray;
         });
     },
+    getUserProfilePicture() {
+
+    },
+    checkIfUserIsFriend() {
+      
+    }
   },
 };
 </script>
@@ -61,5 +70,14 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.profile-picture {
+  height: 5em;
+  width: 5em;
+}
+
+.add-friend-button {
+  background-color: #0a6496 !important;
 }
 </style>

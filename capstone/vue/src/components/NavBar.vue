@@ -12,7 +12,7 @@
         >Wishlist</b-dropdown-item
       >
       <b-dropdown-item to="/friends">Friends</b-dropdown-item>
-      <b-dropdown-item v-on:click.prevent="routeToUserProfile"
+      <b-dropdown-item v-on:click.prevent="routeToUserHistory"
         >Game History</b-dropdown-item
       >
     </b-nav-item-dropdown>
