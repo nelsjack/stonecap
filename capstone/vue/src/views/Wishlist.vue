@@ -1,17 +1,22 @@
 <template>
+<div class="wishlist-container">
   <div class="wishlist">
-    <h3>Your Wishlist</h3>
-    <wishlist-game-card :games="this.wishlistGames" />
+    <h3>
+      Your Wishlist
+      <b-icon icon="book"></b-icon>
+    </h3>
+    <game-card :games="this.wishlistGames"/>
   </div>
+</div>
 </template>
 
 <script>
-import WishlistGameCard from "../components/WishlistGameCard.vue";
+import GameCard from "../components/GameCard.vue";
 import boardGameService from "../services/BoardGameService";
 
 export default {
   name: "Wishlist",
-  components: { WishlistGameCard },
+  components: { GameCard },
   data() {
     return {
       wishlistGames: [],
@@ -38,10 +43,14 @@ export default {
 
 <style>
 .wishlist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   margin-top: 3em;
+  width: 75%;
+}
+
+.wishlist-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .headings {
