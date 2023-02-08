@@ -1,8 +1,8 @@
 <template>
   <b-navbar class="navbar justify-content-between sticky-top shadow p-3 mb-5">
-    <b-nav-item-dropdown id="home-dropdown" class="list-unstyled">
+    <b-nav-item-dropdown id="home-dropdown" class="list-unstyled" no-caret>
       <template slot="button-content">
-        <b-icon icon="list" scale="2"></b-icon>
+        <b-icon icon="list" style="color: white" scale="2"></b-icon>
       </template>
       <b-dropdown-item to="/">Home</b-dropdown-item>
       <b-dropdown-item v-on:click.prevent="routeToAllPosts"
@@ -16,7 +16,7 @@
     </b-nav-item-dropdown>
     <b-navbar-brand class="nav-title" to="/"> Stone Cap </b-navbar-brand>
     <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
-    <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled">
+    <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled" :text="this.$store.state.user.username">
       <b-dropdown-item v-on:click.prevent="routeToUserProfile"
         >Profile</b-dropdown-item
       >
@@ -65,20 +65,24 @@ export default {
 }
 
 #home-dropdown {
-  width: 10em;
+  width: 240px;
   text-align: start;
-  margin-left: 1em;
+  margin-left: 16px;
 }
 
 #profile-dropdown {
-  width: 10em;
+  width: 240px;
   text-align: end;
-  margin-right: 1em;
+  margin-right: 16px;
+  font-size: 1.3em;
+  color: white
 }
 
 .nav-title {
   color: white !important;
   font-size: 2em !important;
   font-weight: bold;
+  margin: 0px !important;
 }
+
 </style>

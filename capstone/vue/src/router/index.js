@@ -10,6 +10,7 @@ import Wishlist from '../views/Wishlist.vue'
 import store from '../store/index'
 import Post from '../views/Post.vue'
 import AllPosts from '../components/AllPosts.vue' 
+import GameHistory from '../views/GameHistory.vue'
 
 Vue.use(Router)
 
@@ -98,6 +99,14 @@ const router = new Router({
       path: "/post/all-posts", 
       name: "AllPosts", 
       component: AllPosts, 
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/history/:username",
+      name: "history",
+      component: GameHistory,
       meta: {
         requiresAuth: false
       }
