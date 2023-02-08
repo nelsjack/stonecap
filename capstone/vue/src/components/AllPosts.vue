@@ -2,7 +2,8 @@
   <div class="all-posts-container">
       <h1 class="title"> Feed </h1>
         <b-button class="post-button" variant="primary" v-on:click="routeToCreatePost()">Add New Post</b-button>
-      <post-card :posts="this.posts"/>
+
+      <post-card :posts="this.posts" class="all-posts"/>
      
   </div>
 </template>
@@ -34,19 +35,24 @@ export default {
 </script>
 
 <style>
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
- }
+
+ .title {
+      justify-content: center;
+  }
+
+  .all-posts{
+   width: 75%
+  }
 
   .all-posts-container {
-      justify-content: center;
-    width: 75%;
+      display: flex; 
+      flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 1em;
   }
-  .title {
-      justify-content: center;
-  }
+
+
+
+
 </style>

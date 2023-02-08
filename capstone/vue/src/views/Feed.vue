@@ -27,12 +27,17 @@ export default {
 
 <style>
 .feed-page{
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
+  width: 75%; 
 }
 .all-posts{
    margin: 5em;
   justify-content: center;
 }
+.users-posts{
+  width: 75%
+}
+
 </style>
