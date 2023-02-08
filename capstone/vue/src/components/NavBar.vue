@@ -14,7 +14,7 @@
       <b-dropdown-item>Friends</b-dropdown-item>
       <b-dropdown-item>Game history</b-dropdown-item>
     </b-nav-item-dropdown>
-    <b-navbar-brand class="nav-title" to="/"> Stone Cap </b-navbar-brand>
+    <b-navbar-brand class="nav-title" to="/"> Stone Cap Games </b-navbar-brand>
     <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
     <b-nav-item-dropdown id="profile-dropdown" class="list-unstyled" :text="this.$store.state.user.username">
       <b-dropdown-item v-on:click.prevent="routeToUserProfile"
