@@ -86,7 +86,7 @@ const router = new Router({
       name: "Profile",
       component: ProfilePage,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -94,7 +94,7 @@ const router = new Router({
       name: "Wishlist",
       component: Wishlist,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -110,7 +110,7 @@ const router = new Router({
       name: "history",
       component: GameHistory,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
