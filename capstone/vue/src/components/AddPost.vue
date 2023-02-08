@@ -146,7 +146,9 @@ export default {
   border-radius: 10px;
   margin-top: 10px;
   background-color: #ffff;
+  
 }
+
 
 .new-post {
   margin: 10px; 
