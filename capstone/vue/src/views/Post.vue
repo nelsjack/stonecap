@@ -23,16 +23,15 @@ export default {
 <style>
 .post-home {
   display: flex;
-  flex-direction: row;
   justify-content: center;
-  align-items: center;
+ 
 }
 .add-post {
-  margin: 5em;
-  justify-content: left;
+  margin: 5em; 
+  height: 10em; 
+
 }
-.users-posts {
-  margin: 5em;
-  justify-content: right;
+.users-posts{
+  width: 100%
 }
 </style>

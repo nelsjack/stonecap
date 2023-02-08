@@ -1,7 +1,7 @@
 <template>
   <div class="users-posts-container">
     <h2 class="title">Your Posts</h2>
-    <post-card :posts="this.posts" />
+    <post-card class="users-posts" :posts="this.posts" />
   </div>
 </template>
 
@@ -16,31 +16,28 @@ export default {
       posts: [],
     };
   },
-      created(){
-      postService.getAllByUserId(this.$store.state.user.id).then((response) => {
-          console.log(response.data); 
-          this.posts = response.data; 
-      })
-  }, 
-      
-  
+  created() {
+    postService.getAllByUserId(this.$store.state.user.id).then((response) => {
+      console.log(response.data);
+      this.posts = response.data;
+    });
+  },
 };
 </script>
 
 
 <style>
- body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
- }
+.title {
+  justify-content: center;
+}
 
-  .users-posts-container {
-    width: 30%;
-    margin-top: 1em;
-  }
-  .title {
-      justify-content: center;
-  }
+.users-posts-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%
+}
+
+
+
 </style>
