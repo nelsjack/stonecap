@@ -15,9 +15,11 @@ components: {
 </script>
 
 <style>
-  body {
-    margin: 0px;
-    background-color: #F4F4F4;
+   body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   #app {
@@ -31,5 +33,14 @@ components: {
     align-items: center;
     height: 3em;
     background-color: #0A6496;
+  }
+  .page-title {
+  display: inline-flex;
+  margin-left: 10px;
+  margin-right: 10px;
+}  
+.container {
+    width: 75%;
+    margin-top: 1em;
   }
 </style>
