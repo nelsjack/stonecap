@@ -20,7 +20,10 @@ export default {
         return http.get(`http://localhost:9000/user/search/contains/${searchTerm}`);
     }, createFriendship(friendship) {
         return http.post(`http://localhost:9000/user/add-friend`, friendship)
+    }, getUserIdByUsername(username) {
+        return http.get(`http://localhost:9000/user/search/${username}`)
     }
+
     
 
 }

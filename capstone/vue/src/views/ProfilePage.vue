@@ -78,13 +78,16 @@ export default {
       });
     },
     addFriend() {
-      console.log(this.$store.state.user.id)
-      const friendship = {
+      userService.getUserIdByUsername(this.$route.params.username)
+      .then((response) => {
+        const friendship = {
         user_id_one: this.$store.state.user.id,
-        user_id_two: 3
+        user_id_two: response.data.id
       }
-      userService.createFriendship(friendship);
-      this.addFriendButtonDisabled = true
+        userService.createFriendship(friendship);
+        this.addFriendButtonDisabled = true
+      })
+      
     }
   },
 };
