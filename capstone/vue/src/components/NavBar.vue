@@ -11,7 +11,7 @@
       <b-dropdown-item v-on:click.prevent="routeToUserWishlist"
         >Wishlist</b-dropdown-item
       >
-      <b-dropdown-item>Friends</b-dropdown-item>
+      <b-dropdown-item to="/friends">Friends</b-dropdown-item>
       <b-dropdown-item>Game history</b-dropdown-item>
     </b-nav-item-dropdown>
     <b-navbar-brand class="nav-title" to="/"> Stone Cap </b-navbar-brand>
