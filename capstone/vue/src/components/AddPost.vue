@@ -113,10 +113,9 @@ export default {
   },
   methods: {
     onSubmit() {
-      console.log("post");
       postService.createNewPost(this.form).then((response) => {
         if (response.status === 201) {
-          // this.$router.push("/");
+          //this.$router.push("create-post");
         }
       });
     },

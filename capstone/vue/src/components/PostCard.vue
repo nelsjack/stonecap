@@ -8,6 +8,8 @@
     >
       <img class="post-image" :src="post.image" />
       <h4 class="post-title">{{ post.title }}</h4>
+<!-- 
+    <img src="../assets/star.png" class="star-rating" v-for="rating in posts" v-bind:key="rating"/>  -->
       
       <!-- <img src='../assets/star.png' class='star-rating'
       v-bind:title="post.rating + 'rating'" v-for='rating in posts' v-bind:key='rating' /> -->
@@ -22,7 +24,6 @@
 </template>
 
 <script>
-// import postService from "../services/PostService";
 import PostUsername from "./PostUsername.vue"
 export default {
   name: "post-card",
@@ -31,16 +32,8 @@ export default {
   data() {
     return {
       username: "",
-      // rating: 0
     };
   },
-  
-    // getStarReviews(rating){
-    //   postService.rating(rating).then((response) => {
-    //     this.rating = response.data
-    //   })
-
-    // }
 
 };
 </script>
