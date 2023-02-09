@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <h1 class=page-title>Search Page</h1>
+    <div class="search-combo">
 <b-form-input :v-bind="searchTerm"  v-model="searchTerm" placeholder="Enter Board Game Name Here"></b-form-input>
-<b-button type="submit"  >Search</b-button>
-<h2>{{searchTerm}}</h2>
-<search-games></search-games>
+<b-button  class="search-button" @click="sendSearch" >Search</b-button>
+
+    </div>
+<search-games :searchTerm="sentSearch" :key="sentSearch"></search-games>
    
 
   </div>
@@ -18,13 +20,18 @@ export default {
   data() {
     return {
      searchTerm:"",
+     sentSearch:"",
+
     };
   },
   created() {
    
   },
   methods: {
-    
+    sendSearch(){
+        this.sentSearch=this.searchTerm;
+        
+    }
   },
 };
 </script>

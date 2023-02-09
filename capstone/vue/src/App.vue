@@ -46,4 +46,11 @@ components: {
   .search-button{
      display: inline-flex;
   }
+  .search-bar{
+     display: inline-flex;
+  }
+  .search-combo{
+    display: inline-flex;
+    flex-direction: row;
+  }
 </style>

@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ee1e5c1f-3a1f-48d3-a366-d64c07d1b8fb" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/capstone/vue/src/services/BoardGameService.js" beforeDir="false" afterPath="$PROJECT_DIR$/capstone/vue/src/services/BoardGameService.js" afterDir="false" />
-    </list>
+    <list default="true" id="ee1e5c1f-3a1f-48d3-a366-d64c07d1b8fb" name="Changes" comment="Started board game search page" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +87,14 @@
       <option name="presentableId" value="Default" />
       <updated>1675091478698</updated>
     </task>
+    <task id="LOCAL-00001" summary="Started board game search page">
+      <created>1675958257661</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1675958257661</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,5 +107,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Started board game search page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Started board game search page" />
   </component>
 </project>
