@@ -1,6 +1,8 @@
 <template>
   <div class="container">
-    <h1 class=page-title>Search Page</h1>
+    <h1 class=page-title>Search</h1>
+    
+    <div class="break"></div>
     <div class="search-combo">
 <b-form-input :v-bind="searchTerm"  v-model="searchTerm" placeholder="Enter Board Game Name Here"></b-form-input>
 <b-button  class="search-button" @click="sendSearch" >Search</b-button>

@@ -5,7 +5,8 @@
       Board Game Results
       <b-icon icon="search" scale="0.9"></b-icon>
     </h1>
-    <h1>{{searchTerm}}</h1>
+   
+   
     <game-card :games="this.games" />
   </div>
 </template>
@@ -24,12 +25,13 @@ export default {
     };
   },
   created() {
-    this.getSearchBoardGames(this.searchTerm);
+    this.getSearchBoardGames();
   },
   methods: {
     getSearchBoardGames() {
-      boardGameService.getSearchBoardGames().then((response) => {
+      boardGameService.getSearchBoardGames(this.searchTerm).then((response) => {
         this.games = response.data.games;
+        
       });
     },
   },
