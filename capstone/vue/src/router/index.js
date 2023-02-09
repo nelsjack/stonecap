@@ -12,7 +12,7 @@ import Post from '../views/Post.vue'
 import AllPosts from '../components/AllPosts.vue'
 import GameHistory from '../views/GameHistory.vue'
 import Friends from '../views/Friends.vue'
-
+import Search from '../views/Search.vue'
 
 Vue.use(Router)
 
@@ -117,6 +117,14 @@ const router = new Router({
       path: "/friends",
       name: "Friends",
       component: Friends,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: "/search",
+      name: "Search",
+      component: Search,
       meta: {
         requiresAuth: true
       }
