@@ -115,7 +115,7 @@ export default {
     onSubmit() {
       postService.createNewPost(this.form).then((response) => {
         if (response.status === 201) {
-          //this.$router.push("create-post");
+          this.$router.go("/create-post");
         }
       });
     },
