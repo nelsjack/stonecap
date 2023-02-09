@@ -43,4 +43,7 @@ components: {
     width: 75%;
     margin-top: 1em;
   }
+  .search-button{
+     display: inline-flex;
+  }
 </style>
