@@ -36,11 +36,34 @@ components: {
   }
   .page-title {
   display: inline-flex;
-  margin-left: 10px;
+  margin-left:16px;
   margin-right: 10px;
+  align-content: center;
+ 
 }  
 .container {
     width: 75%;
     margin-top: 1em;
+    align-content: center
   }
+  .search-button{
+     display: flex;
+     align-content: center
+  }
+  .search-bar{
+     display: flex;
+  }
+  .search-combo{
+    display: flex;
+    flex-direction: row;
+    
+    align-content: center;
+    margin-left:16px;
+    margin-right:16px;
+   
+  }
+  .break {
+  flex-basis: 100%;
+  height: 0.5em;
+}
 </style>

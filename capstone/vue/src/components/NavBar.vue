@@ -15,6 +15,10 @@
       <b-dropdown-item v-on:click.prevent="routeToUserHistory"
         >Game History</b-dropdown-item
       >
+      <b-dropdown-item v-on:click.prevent="routeToSearch"
+        >Search</b-dropdown-item
+      >
+      
     </b-nav-item-dropdown>
     <b-navbar-brand class="nav-title" to="/"> Stone Cap Games </b-navbar-brand>
     <!-- todo: conditionally display profile-dropdown if user is logged in, else, display login button -->
@@ -62,6 +66,14 @@ export default {
       this.$router.push({
         name: "history",
         params: { username: this.$store.state.user.username },
+      });
+    },
+    
+
+    routeToSearch() {
+      this.$router.push({
+        name: "Search",
+        
       });
     },
   },
