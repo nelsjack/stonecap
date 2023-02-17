@@ -33,7 +33,7 @@ export default {
         displayCurrentUsers(boardGameId) {
           userService.getUsersByBoardGameId(boardGameId).then(response => {
             let responseArray = response.data;
-            const result = responseArray.filter( function( item, index, inputArray ) {
+            const result = responseArray.filter( ( item, index, inputArray ) => {
               return inputArray.indexOf(item) == index;
           });
             this.currentPlayers = result;
@@ -60,12 +60,6 @@ export default {
               }
             })
           })
-        },
-        checkIfGameIsOwned() {
-
-        },
-        checkIfGameIsPlayed() {
-
         }
       }
 };
